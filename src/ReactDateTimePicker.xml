@@ -9,6 +9,8 @@
     <properties>
         <propertyGroup caption="General">
             <systemProperty key="Label" />
+            <systemProperty key="Visibility"/>
+            <systemProperty key="Editability"/>
             <property key="dateTimeAttribute" type="attribute" onChange="onChangeAction">
                 <caption>DateTime</caption>
                 <description/>

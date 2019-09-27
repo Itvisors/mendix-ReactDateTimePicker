@@ -49,6 +49,7 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
                         minMinutes = {this.props.minMinutes}
                         maxMinutes = {this.props.maxMinutes}
                         minuteStep = {this.props.minuteStep}
+                        disabled = {this.props.dateTimeAttribute.readOnly}
                     />
                     <Alert id={this.props.id + "-error"}>{validationFeedback}</Alert>
                 </Fragment>;

@@ -17,6 +17,7 @@ export interface ReactDateTimeUIProps {
     maxSeconds:number;
     minSeconds:number;
     secondStep:number;
+    disabled: boolean;
 }
 
 export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
@@ -28,7 +29,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     }
 
     render(): ReactNode {
-        let inputProps = {placeholder: this.props.placeholder};
+        let inputProps = {placeholder: this.props.placeholder, disabled: this.props.disabled};
         let timeConstraints = {seconds: {min: this.props.minSeconds, max: this.props.maxSeconds, step:this.props.secondStep},
                                 minutes: {min: this.props.minMinutes, max: this.props.maxMinutes, step:this.props.minuteStep},
                                 hours: {min: this.props.minHours, max: this.props.maxHours, step:this.props.hourStep}};
