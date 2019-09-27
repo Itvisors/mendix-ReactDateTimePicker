@@ -13,8 +13,6 @@ interface ReactDateTimePickerState {
 
 class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, ReactDateTimePickerState> {
     private readonly onBlurHandle = this.onBlur.bind(this);
-    private readonly onFocusHandle = this.onFocus.bind(this);
-    private readonly OnButtonClickHandle = this.openCalendar.bind(this);
     readonly state: ReactDateTimePickerState = { validDate: true, open: false };
     
     private onBlur(dateTimeSelected: moment.Moment): void {
@@ -30,14 +28,6 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
         this.setState({open: false})
     }
 
-    private openCalendar(): void {
-        this.setState({open: this.state.open === false})
-    }
-
-    private onFocus(): void {
-        this.setState({open: true})
-    }
-
     render(): ReactNode {
         let placeholder = typeof this.props.placeholder === 'undefined' ? "" : this.props.placeholder.value;
         let validationFeedback : string | undefined;
@@ -46,6 +36,7 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
         } else if (this.props.showInvalidMessage && this.state.validDate === false) {
             validationFeedback = typeof this.props.invalidDateMessage === 'undefined' ? undefined : this.props.invalidDateMessage.value;
         }
+
         let locale = typeof this.props.locale === 'undefined' || this.props.locale.value === "" ? undefined : this.props.locale.value;
         let dateFormat = typeof this.props.dateFormat === 'undefined' || this.props.dateFormat.value === "" ? undefined : this.props.dateFormat.value;
         let timeFormat = typeof this.props.timeFormat === 'undefined' || this.props.timeFormat.value === "" ? undefined : this.props.timeFormat.value;
@@ -65,14 +56,10 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
                         maxMinutes = {this.props.maxMinutes}
                         minuteStep = {this.props.minuteStep}
                         disabled = {this.props.dateTimeAttribute.readOnly}
-                        open = {this.state.open}
-                        onFocus = {this.onFocusHandle}
                         closeOnSelect = {this.props.closeOnSelect}
                         locale = {locale}
+                        disablePast = {this.props.disablePast}
                     />
-                    <button type= "button" className="btn mx-button spacing-outer-left" onClick = {this.OnButtonClickHandle}>
-                        <span className="glyphicon glyphicon-calendar"></span>
-                    </button>
                     <Alert id={this.props.id + "-error"}>{validationFeedback}</Alert>
                 </Fragment>;
     }

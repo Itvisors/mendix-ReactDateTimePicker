@@ -19,8 +19,9 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
     placeholder?: DynamicValue<string>;
     showInvalidMessage: boolean;
     invalidDateMessage?: DynamicValue<string>;
-    closeOnSelect: boolean;
     onChangeAction?: ActionValue;
+    closeOnSelect: boolean;
+    disablePast: boolean;
     locale?: DynamicValue<string>;
     dateFormat?: DynamicValue<string>;
     timeFormat?: DynamicValue<string>;
@@ -40,8 +41,9 @@ export interface ReactDateTimePickerPreviewProps extends CommonProps {
     placeholder?: string;
     showInvalidMessage: boolean;
     invalidDateMessage?: string;
-    closeOnSelect: boolean;
     onChangeAction?: ActionPreview;
+    closeOnSelect: boolean;
+    disablePast: boolean;
     locale?: string;
     dateFormat?: string;
     timeFormat?: string;
@@ -61,8 +63,9 @@ export interface VisibilityMap {
     placeholder: boolean;
     showInvalidMessage: boolean;
     invalidDateMessage: boolean;
-    closeOnSelect: boolean;
     onChangeAction: boolean;
+    closeOnSelect: boolean;
+    disablePast: boolean;
     locale: boolean;
     dateFormat: boolean;
     timeFormat: boolean;
