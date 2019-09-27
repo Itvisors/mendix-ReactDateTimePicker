@@ -36,6 +36,10 @@
                     <translation lang="en_US"></translation>
                 </translations>
             </property>
+            <property key="closeOnSelect" type="boolean" required="true" defaultValue="false">
+                <caption>Close on select</caption>
+                <description>Close the datepicker when a date is selected</description> 
+            </property>
         </propertyGroup>
         <propertyGroup caption="Events">
             <property key="onChangeAction" type="action" required="false">
@@ -44,6 +48,13 @@
             </property>
         </propertyGroup>
         <propertyGroup caption="DateTimeFormat">
+            <property key="locale" type="textTemplate" required="false">
+                <caption>Locale setting</caption>
+                <description>Change language accorging to https://momentjs.com/docs/#/i18n/changing-locale/</description> 
+                <translations>
+                    <translation lang="en_US">en</translation>
+                </translations>
+            </property>
             <property key="dateFormat" type="textTemplate" required="false">
                 <caption>Date format</caption>
                 <description>See https://momentjs.com/docs/#/displaying/format/ for available formats</description> 

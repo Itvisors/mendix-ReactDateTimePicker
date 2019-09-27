@@ -4,6 +4,8 @@
 
  .rdt {
     position: relative;
+    width:100%;
+    flex: 1;
   }
   .rdtPicker {
     display: none;
