@@ -41,5 +41,57 @@
                 <description/>
             </property>
         </propertyGroup>
+        <propertyGroup caption="DateTimeFormat">
+            <property key="dateFormat" type="textTemplate" required="false">
+                <caption>Date format</caption>
+                <description>See https://momentjs.com/docs/#/displaying/format/ for available formats</description> 
+                <translations>
+                    <translation lang="en_US"></translation>
+                </translations>
+            </property>
+            <property key="timeFormat" type="textTemplate" required="false">
+                <caption>Time format</caption>
+                <description>See https://momentjs.com/docs/#/displaying/format/ for available formats</description> 
+                <translations>
+                    <translation lang="en_US"></translation>
+                </translations>
+            </property>
+            <property key="minHours" type="integer" required="true" defaultValue="0">
+                <caption>Minimal hour</caption>
+                <description>Use this property to set the minimal hour that the time can have</description>
+            </property>
+            <property key="maxHours" type="integer" required="true" defaultValue="24">
+                <caption>Maximal hour</caption>
+                <description>Use this property to set the maximal hour that the time can have</description>
+            </property>
+            <property key="hourStep" type="integer" required="true" defaultValue="1">
+                <caption>Hour step</caption>
+                <description>Use this property to set the hour step. If set to two, two hours are skipped every click</description>
+            </property>
+            <property key="minMinutes" type="integer" required="true" defaultValue="0">
+                <caption>Minimal minute</caption>
+                <description>Use this property to set the minimal minute that the time can have</description>
+            </property>
+            <property key="maxMinutes" type="integer" required="true" defaultValue="60">
+                <caption>Maximal minute</caption>
+                <description>Use this property to set the maximal minute that the time can have</description>
+            </property>
+            <property key="minuteStep" type="integer" required="true" defaultValue="1">
+                <caption>Minute step</caption>
+                <description>Use this property to set the minute step. If set to two, two minutes are skipped every click</description>
+            </property>
+            <property key="minSeconds" type="integer" required="true" defaultValue="0">
+                <caption>Minimal seconds</caption>
+                <description>Use this property to set the minimal second that the time can have</description>
+            </property>
+            <property key="maxSeconds" type="integer" required="true" defaultValue="60">
+                <caption>Maximal seconds</caption>
+                <description>Use this property to set the maximal second that the time can have</description>
+            </property>
+            <property key="secondStep" type="integer" required="true" defaultValue="1">
+                <caption>Second step</caption>
+                <description>Use this property to set the second step. If set to two, two seconds are skipped every click</description>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>
