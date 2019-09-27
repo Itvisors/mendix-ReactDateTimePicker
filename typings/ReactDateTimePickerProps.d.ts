@@ -4,6 +4,8 @@
  * @author Mendix Widgets Team
  */
 import { CSSProperties } from "react";
+import { ActionPreview } from "@mendix/pluggable-widgets-typing-generator/dist/typings";
+import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
 interface CommonProps {
     id: string;
@@ -13,13 +15,25 @@ interface CommonProps {
 }
 
 export interface ReactDateTimePickerContainerProps extends CommonProps {
-    sampleText?: string;
+    dateTimeAttribute: EditableValue<Date>;
+    placeholder?: DynamicValue<string>;
+    showInvalidMessage: boolean;
+    invalidDateMessage?: DynamicValue<string>;
+    onChangeAction?: ActionValue;
 }
 
 export interface ReactDateTimePickerPreviewProps extends CommonProps {
-    sampleText?: string;
+    dateTimeAttribute: string;
+    placeholder?: string;
+    showInvalidMessage: boolean;
+    invalidDateMessage?: string;
+    onChangeAction?: ActionPreview;
 }
 
 export interface VisibilityMap {
-    sampleText: boolean;
+    dateTimeAttribute: boolean;
+    placeholder: boolean;
+    showInvalidMessage: boolean;
+    invalidDateMessage: boolean;
+    onChangeAction: boolean;
 }

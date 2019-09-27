@@ -7,10 +7,39 @@
     <description>DateTimePicker based on https://github.com/YouCanBookMe/react-datetime</description>
     <icon/>
     <properties>
-        <property key="sampleText" type="string" required="false">
-            <caption>Default value</caption>
-            <category>General</category>
-            <description>Sample text input</description>
-        </property>
+        <propertyGroup caption="General">
+            <systemProperty key="Label" />
+            <property key="dateTimeAttribute" type="attribute" onChange="onChangeAction">
+                <caption>DateTime</caption>
+                <description/>
+                <attributeTypes>
+                    <attributeType name="DateTime"/>
+                </attributeTypes>
+            </property>
+            <property key="placeholder" type="textTemplate" required="false">
+                <caption>Placeholder</caption>
+                <description></description> 
+                <translations>
+                    <translation lang="en_US"></translation>
+                </translations>
+            </property>
+            <property key="showInvalidMessage" type="boolean" required="true" defaultValue="true">
+                <caption>Show invalid message</caption>
+                <description></description> 
+            </property>
+            <property key="invalidDateMessage" type="textTemplate" required="false">
+                <caption>Invalid message</caption>
+                <description>Message to show when an invalid date is selected</description> 
+                <translations>
+                    <translation lang="en_US"></translation>
+                </translations>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="onChangeAction" type="action" required="false">
+                <caption>OnChange action</caption>
+                <description/>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>
