@@ -1,17 +1,32 @@
 ## ReactDateTimePicker
-[DateTimePicker based on https://github.com/YouCanBookMe/react-datetime]
+DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 
 ## Features
-[feature highlights]
+- Use as Datetimepicker.
+- Use as Datepicker.
+- Use as Timepicker.
+- Disable days in the past.
+- Change language settings to change default formatting.
+- Let the user type the datetime.
 
-## Usage
-[step by step instructions]
+## Configuration
+### General
+- Default mendix behavor for show label, Visibility and Editability.
+- DateTime: Attribute to use.
+- Placeholder: Text to show when dateTime is empty (e.g. the format)
+- Show invalid message: Whether the widget should check whether the date is according to the given format and if not, show a message.
+- Invalid message: The message to show when the datetime is entered in an incorrect format.
 
-## Demo project
-[link to sandbox]
+### Behavior
+- OnChange action: Action to be called when dateTime is changed.
+- Close on select: Whether or not to close the datetimepicker when a date is selected.
+- Disable days in past: Whether or not to disable all days in the past.
 
-## Issues, suggestions and feature requests
-[link to GitHub issues]
+### DateTimeFormat
+- Locale: Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
+- Picker: Whether to use the widget as datetimepicker, datepicker or timepicker
+- dateFormat: If default format of locale does not suffice, you can enter the wanted format in here. See https://momentjs.com/docs/#/displaying/format/ for available formats.
+- timeFormat: Same as dateformat
+- Integers to change min, max and step of hours, minutes and seconds. Note that maximal minute and maximal second are 59, since 60 will be 0.
 
-## Development and contribution
-[specify contribute]
+
