@@ -21,17 +21,14 @@
             <property key="placeholder" type="textTemplate" required="false">
                 <caption>Placeholder</caption>
                 <description></description> 
-                <translations>
-                    <translation lang="en_US"></translation>
-                </translations>
             </property>
             <property key="showInvalidMessage" type="boolean" required="true" defaultValue="true">
                 <caption>Show invalid message</caption>
-                <description></description> 
+                <description>Whether the widget should check whether the date is according to the given format and if not, show a message.</description> 
             </property>
             <property key="invalidDateMessage" type="textTemplate" required="false">
                 <caption>Invalid message</caption>
-                <description>Message to show when an invalid date is selected</description> 
+                <description>Message to show when an invalid date is entered</description> 
                 <translations>
                     <translation lang="en_US"></translation>
                 </translations>
@@ -51,24 +48,33 @@
                 <description>Disable all days in the past</description> 
             </property>
         </propertyGroup>
-        <propertyGroup caption="DateTimeFormat">
+        <propertyGroup caption="DateTime Options">
             <property key="locale" type="textTemplate" required="false">
                 <caption>Locale setting</caption>
-                <description>Change language accorging to https://momentjs.com/docs/#/i18n/changing-locale/</description> 
+                <description>Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch)) </description> 
                 <translations>
                     <translation lang="en_US">en</translation>
                 </translations>
             </property>
+            <property key="picker" type="enumeration" required="true" defaultValue="datetimepicker">
+                <caption>Picker</caption>
+                <description>Whether to use the widget as datetimepicker, datepicker or timepicker</description> 
+                <enumerationValues>
+                    <enumerationValue key="datetimepicker">Datetimepicker</enumerationValue>
+                    <enumerationValue key="datepicker">Datepicker</enumerationValue>
+                    <enumerationValue key="timepicker">TimePicker</enumerationValue>
+                </enumerationValues>
+            </property>
             <property key="dateFormat" type="textTemplate" required="false">
                 <caption>Date format</caption>
-                <description>See https://momentjs.com/docs/#/displaying/format/ for available formats</description> 
+                <description>See https://momentjs.com/docs/#/displaying/format/ for available formats. If left empty, the default is selected of the locale.</description> 
                 <translations>
                     <translation lang="en_US"></translation>
                 </translations>
             </property>
             <property key="timeFormat" type="textTemplate" required="false">
                 <caption>Time format</caption>
-                <description>See https://momentjs.com/docs/#/displaying/format/ for available formats</description> 
+                <description>See https://momentjs.com/docs/#/displaying/format/ for available formats. If left empty, the default is selected of the locale.</description> 
                 <translations>
                     <translation lang="en_US"></translation>
                 </translations>
@@ -77,7 +83,7 @@
                 <caption>Minimal hour</caption>
                 <description>Use this property to set the minimal hour that the time can have</description>
             </property>
-            <property key="maxHours" type="integer" required="true" defaultValue="24">
+            <property key="maxHours" type="integer" required="true" defaultValue="23">
                 <caption>Maximal hour</caption>
                 <description>Use this property to set the maximal hour that the time can have</description>
             </property>
@@ -89,7 +95,7 @@
                 <caption>Minimal minute</caption>
                 <description>Use this property to set the minimal minute that the time can have</description>
             </property>
-            <property key="maxMinutes" type="integer" required="true" defaultValue="60">
+            <property key="maxMinutes" type="integer" required="true" defaultValue="59">
                 <caption>Maximal minute</caption>
                 <description>Use this property to set the maximal minute that the time can have</description>
             </property>
@@ -101,7 +107,7 @@
                 <caption>Minimal seconds</caption>
                 <description>Use this property to set the minimal second that the time can have</description>
             </property>
-            <property key="maxSeconds" type="integer" required="true" defaultValue="60">
+            <property key="maxSeconds" type="integer" required="true" defaultValue="59">
                 <caption>Maximal seconds</caption>
                 <description>Use this property to set the maximal second that the time can have</description>
             </property>

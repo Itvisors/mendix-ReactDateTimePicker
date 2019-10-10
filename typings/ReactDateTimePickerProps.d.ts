@@ -14,6 +14,8 @@ interface CommonProps {
     tabIndex: number;
 }
 
+export type PickerEnum = "datetimepicker" | "datepicker" | "timepicker";
+
 export interface ReactDateTimePickerContainerProps extends CommonProps {
     dateTimeAttribute: EditableValue<Date>;
     placeholder?: DynamicValue<string>;
@@ -23,6 +25,7 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
     closeOnSelect: boolean;
     disablePast: boolean;
     locale?: DynamicValue<string>;
+    picker: PickerEnum;
     dateFormat?: DynamicValue<string>;
     timeFormat?: DynamicValue<string>;
     minHours: number;
@@ -45,6 +48,7 @@ export interface ReactDateTimePickerPreviewProps extends CommonProps {
     closeOnSelect: boolean;
     disablePast: boolean;
     locale?: string;
+    picker: PickerEnum;
     dateFormat?: string;
     timeFormat?: string;
     minHours: number;
@@ -67,6 +71,7 @@ export interface VisibilityMap {
     closeOnSelect: boolean;
     disablePast: boolean;
     locale: boolean;
+    picker: boolean;
     dateFormat: boolean;
     timeFormat: boolean;
     minHours: boolean;

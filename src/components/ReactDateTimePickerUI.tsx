@@ -6,8 +6,8 @@ import moment, { Moment } from 'moment';
 export interface ReactDateTimeUIProps {
     onBlur: (dateTimeSelected: moment.Moment) => void;
     placeholder?: string;
-    timeFormat?:string;
-    dateFormat?:string;
+    timeFormat?:string | boolean;
+    dateFormat?:string | boolean;
     maxHours:number;
     minHours:number;
     hourStep:number;
@@ -21,6 +21,7 @@ export interface ReactDateTimeUIProps {
     closeOnSelect: boolean;
     locale?: string;
     disablePast: boolean;
+    defaultValue?: Moment;
 }
 
 export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
@@ -31,18 +32,18 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     datetimeRef: any;
     
     private onBlur(dateTimeSelected: moment.Moment): void {
-        //When item is click, call onclick method and pass the enum key
+        //on leave, call onclick method and pass the selected datetime
         this.closeDate = Date.now();
         this.props.onBlur(dateTimeSelected);
     }
 
     private onFocus(): void {
-        //When item is click, call onclick method and pass the enum key
+        //When button is clicked, open the calendar
         this.datetimeRef.openCalendar();
     }
 
     private openCalendar(): void {
-        //if button is clicked, first onBlur is triggered
+        //if button is clicked, first onBlur is triggered, so when this is the case, the calendar should not be opened
         let timeElapsed = Date.now() - this.closeDate;
         if (timeElapsed > 100) {
             this.datetimeRef.openCalendar();
@@ -51,12 +52,17 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
 
     render(): ReactNode {
+        // specify placeholder and disabled property in inputprops
         let inputProps = {placeholder: this.props.placeholder, disabled: this.props.disabled};
+        // Set time contrains (min, max and step)
         let timeConstraints = {seconds: {min: this.props.minSeconds, max: this.props.maxSeconds, step:this.props.secondStep},
                                 minutes: {min: this.props.minMinutes, max: this.props.maxMinutes, step:this.props.minuteStep},
                                 hours: {min: this.props.minHours, max: this.props.maxHours, step:this.props.hourStep}};
+
+        //Only set this attribute if user selected to disable dates in past, otherwise leave as undefined
         let validDate = undefined;
         if (this.props.disablePast) {
+            //Check if date is in the past
             let yesterday = new Date;
             yesterday.setDate( yesterday.getDate() - 1 );
             let yesterDayMoment = moment(yesterday);
@@ -64,24 +70,31 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                 return currentDate.isAfter( yesterDayMoment );
             };
         }
+        let classNamesButton = "btn mx-button spacing-outer-left";
+        if (this.props.disabled) {
+            classNamesButton += " disabled";
+        }
         return <Fragment>
-                    <Datetime 
-                        onBlur={this.onBlurHandle}
-                        onFocus={this.onFocusHandle}
-                        inputProps = {inputProps}
-                        timeConstraints = {timeConstraints}
-                        timeFormat = {this.props.timeFormat}
-                        dateFormat = {this.props.dateFormat}
-                        closeOnSelect = {this.props.closeOnSelect}
-                        locale = {this.props.locale}
-                        isValidDate = {validDate}
-                        ref = {ref => {
-                            this.datetimeRef = ref;
-                        }}
-                    />
-                    <button type= "button" className="btn mx-button spacing-outer-left" onClick = {this.OnButtonClickHandle}>
-                        <span className="glyphicon glyphicon-calendar"></span>
-                    </button>
-                    </Fragment>;
+                    <div className='mx-compound-control'>
+                        <Datetime 
+                            onBlur={this.onBlurHandle}
+                            onFocus={this.onFocusHandle}
+                            inputProps = {inputProps}
+                            timeConstraints = {timeConstraints}
+                            timeFormat = {this.props.timeFormat}
+                            dateFormat = {this.props.dateFormat}
+                            closeOnSelect = {this.props.closeOnSelect}
+                            locale = {this.props.locale}
+                            isValidDate = {validDate}
+                            defaultValue = {this.props.defaultValue}
+                            ref = {ref => {
+                                this.datetimeRef = ref;
+                            }}
+                        />
+                        <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
+                            <span className="glyphicon glyphicon-calendar"></span>
+                        </button>
+                    </div>
+                </Fragment>;
     }
 }
