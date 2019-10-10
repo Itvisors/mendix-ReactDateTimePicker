@@ -11,7 +11,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 
 ## Configuration
 ### General
-- Default mendix behavor for labeling, visibility and editability.
+- Default mendix behavior for labeling, visibility and editability.
 - DateTime: Attribute to use.
 - Placeholder: Text to show when dateTime is empty (e.g. the format)
 - Show invalid message: Whether the widget should check whether the date is according to the given format and if not, show a message.
