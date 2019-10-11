@@ -47,6 +47,20 @@
                 <caption>Disable days in past</caption>
                 <description>Disable all days in the past</description> 
             </property>
+            <property key="minDateAttribute" type="attribute" required="false">
+                <caption>Minimal Date</caption>
+                <description>Attribute used to disable all days before this date</description> 
+                <attributeTypes>
+                    <attributeType name="DateTime"/>
+                </attributeTypes>
+            </property>
+            <property key="maxDateAttribute" type="attribute" required="false">
+                <caption>Maximal Date</caption>
+                <description>Attribute used to disable all days after this date</description> 
+                <attributeTypes>
+                    <attributeType name="DateTime"/>
+                </attributeTypes>
+            </property>
         </propertyGroup>
         <propertyGroup caption="DateTime Options">
             <property key="locale" type="textTemplate" required="false">

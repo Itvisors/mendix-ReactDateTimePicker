@@ -22,6 +22,8 @@ export interface ReactDateTimeUIProps {
     locale?: string;
     disablePast: boolean;
     defaultValue?: Moment;
+    minDate?: Moment;
+    maxDate?: Moment;
 }
 
 export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
@@ -59,15 +61,31 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                                 minutes: {min: this.props.minMinutes, max: this.props.maxMinutes, step:this.props.minuteStep},
                                 hours: {min: this.props.minHours, max: this.props.maxHours, step:this.props.hourStep}};
 
-        //Only set this attribute if user selected to disable dates in past, otherwise leave as undefined
+        //Only set this attribute if user selected to disable dates in past or entered a min or max date, otherwise leave as undefined
         let validDate = undefined;
-        if (this.props.disablePast) {
+        if (this.props.disablePast || typeof this.props.minDate !== 'undefined' || typeof this.props.maxDate !== 'undefined') {
             //Check if date is in the past
             let yesterday = new Date;
             yesterday.setDate( yesterday.getDate() - 1 );
             let yesterDayMoment = moment(yesterday);
+            var disablePast = this.props.disablePast;
+            var minDate = this.props.minDate;
+            var maxDate = this.props.maxDate;
             validDate = function( currentDate : Moment ){
-                return currentDate.isAfter( yesterDayMoment );
+                var valid = true;
+                //check if date is in the past
+                if (disablePast) {
+                    valid = currentDate.isAfter( yesterDayMoment );
+                }
+                //check if date is after mindate
+                if (valid && typeof minDate !== 'undefined') {
+                    valid = currentDate.isSameOrAfter( minDate );
+                }
+                //check if date is before maxdate
+                if (valid && typeof maxDate !== 'undefined') {
+                    valid = currentDate.isSameOrBefore( maxDate );
+                }
+                return valid;
             };
         }
         let classNamesButton = "btn mx-button spacing-outer-left";

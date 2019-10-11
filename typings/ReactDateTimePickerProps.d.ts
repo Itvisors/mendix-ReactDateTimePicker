@@ -24,6 +24,8 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
     onChangeAction?: ActionValue;
     closeOnSelect: boolean;
     disablePast: boolean;
+    minDateAttribute?: EditableValue<Date>;
+    maxDateAttribute?: EditableValue<Date>;
     locale?: DynamicValue<string>;
     picker: PickerEnum;
     dateFormat?: DynamicValue<string>;
@@ -47,6 +49,8 @@ export interface ReactDateTimePickerPreviewProps extends CommonProps {
     onChangeAction?: ActionPreview;
     closeOnSelect: boolean;
     disablePast: boolean;
+    minDateAttribute?: string;
+    maxDateAttribute?: string;
     locale?: string;
     picker: PickerEnum;
     dateFormat?: string;
@@ -70,6 +74,8 @@ export interface VisibilityMap {
     onChangeAction: boolean;
     closeOnSelect: boolean;
     disablePast: boolean;
+    minDateAttribute: boolean;
+    maxDateAttribute: boolean;
     locale: boolean;
     picker: boolean;
     dateFormat: boolean;

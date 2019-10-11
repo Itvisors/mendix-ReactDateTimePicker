@@ -2,7 +2,7 @@ import { Component, ReactNode, createElement, Fragment } from "react";
 import { ReactDateTimeUI } from "./components/ReactDateTimePickerUI";
 import { hot } from "react-hot-loader/root";
 import { ReactDateTimePickerContainerProps } from "../typings/ReactDateTimePickerProps";
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { Alert } from "./components/Alert";
 import "./ui/ReactDateTimePicker.css";
 
@@ -12,7 +12,9 @@ interface ReactDateTimePickerState {
 
 class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, ReactDateTimePickerState> {
     private readonly onBlurHandle = this.onBlur.bind(this);
-    readonly state: ReactDateTimePickerState = { validDate: true};
+    readonly state: ReactDateTimePickerState = { 
+        validDate: true
+    };
     
     //On leave of the datepicker, set the attribute to the selected date
     private onBlur(dateTimeSelected: moment.Moment): void {
@@ -61,6 +63,13 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
 
         let dateTimeValue = typeof this.props.dateTimeAttribute.value === 'undefined' ? undefined : moment(this.props.dateTimeAttribute.value);
 
+        //determine min and max date (can be undefined and value can be undefined)
+        let minDate = typeof this.props.minDateAttribute === 'undefined' ? undefined :
+        typeof this.props.minDateAttribute.value === 'undefined' ? undefined :moment(this.props.minDateAttribute.value);
+
+        let maxDate = typeof this.props.maxDateAttribute === 'undefined' ? undefined : 
+        typeof this.props.maxDateAttribute.value === 'undefined' ? undefined : moment(this.props.maxDateAttribute.value);
+
         //Only render widget when the attribute is available, otherwise the default value is set to undefined
         if (this.props.dateTimeAttribute.status !== 'available') {
             return null;
@@ -85,6 +94,8 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
                             locale = {locale}
                             disablePast = {this.props.disablePast}
                             defaultValue = {dateTimeValue}
+                            minDate = {minDate}
+                            maxDate = {maxDate}
                         />
                         <Alert id={this.props.id + "-error"}>{validationFeedback}</Alert>
                     </Fragment>;
