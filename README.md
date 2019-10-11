@@ -21,6 +21,8 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - OnChange action: Action to be called when dateTime is changed.
 - Close on select: Whether or not to close the datetimepicker when a date is selected.
 - Disable days in past: Whether or not to disable all days in the past.
+- Minimal Date: Attribute used to disable all days before this date
+- Maximal date: Attribute used to disable all days after this date
 
 ### DateTimeFormat
 - Locale: Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
