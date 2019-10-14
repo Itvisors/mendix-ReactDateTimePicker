@@ -6,7 +6,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - Use as Datepicker.
 - Use as Timepicker.
 - Disable days in the past.
-- Disable dates before or after another date.
+- Disable dates before and/or after another date.
 - Change language settings to change default formatting.
 - Let the user type the datetime.
 
