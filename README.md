@@ -28,7 +28,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 ### DateTimeFormat
 - Locale: Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
 - Picker: Whether to use the widget as datetimepicker, datepicker or timepicker
-- dateFormat: If default format of locale does not suffice, you can enter the wanted format in here. See https://momentjs.com/docs/#/displaying/format/ for available formats.
+- dateFormat: If default format of locale does not suffice, you can enter the format in here. See https://momentjs.com/docs/#/displaying/format/ for available formats.
 - timeFormat: Same as dateformat
 - Integers to change min, max and step of hours, minutes and seconds. Note that maximal minute and maximal second are 59, since 60 will be 0.
 
