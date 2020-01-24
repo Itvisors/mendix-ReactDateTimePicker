@@ -18,25 +18,51 @@ export interface ReactDateTimeUIProps {
     minSeconds:number;
     secondStep:number;
     disabled: boolean;
-    closeOnSelect: boolean;
     locale?: string;
     disablePast: boolean;
-    defaultValue?: Moment;
+    dateTimeValue?: Moment;
     minDate?: Moment;
     maxDate?: Moment;
 }
 
+interface ReactDateTimePickerUIState {
+    value: Moment | undefined;
+}
+
 export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     private readonly onBlurHandle = this.onBlur.bind(this);
+    private readonly onChangeHandle = this.onChange.bind(this);
     private readonly onFocusHandle = this.onFocus.bind(this);
     private readonly OnButtonClickHandle = this.openCalendar.bind(this);
     private closeDate = Date.now();
     datetimeRef: any;
+    readonly state: ReactDateTimePickerUIState = { 
+        value: undefined
+    };
     
     private onBlur(dateTimeSelected: moment.Moment): void {
         //on leave, call onclick method and pass the selected datetime
         this.closeDate = Date.now();
         this.props.onBlur(dateTimeSelected);
+    }
+
+    private onChange(dateTimeSelected: moment.Moment): void {
+        this.setState({value: dateTimeSelected});
+    }
+
+    componentDidUpdate(prevProps: ReactDateTimeUIProps) {
+        
+        if((prevProps.dateTimeValue && prevProps.dateTimeValue.isSame(this.props.dateTimeValue))) {
+            return;
+        } else if(!(this.props.dateTimeValue) && !(prevProps.dateTimeValue)) {
+            return;
+        } else {
+            this.setState({value: this.props.dateTimeValue})
+        }
+    }
+
+    componentDidMount() {
+        this.setState({value: this.props.dateTimeValue})
     }
 
     private onFocus(): void {
@@ -96,15 +122,16 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                     <div className='mx-compound-control'>
                         <Datetime 
                             onBlur={this.onBlurHandle}
+                            onChange={this.onChangeHandle}
                             onFocus={this.onFocusHandle}
                             inputProps = {inputProps}
                             timeConstraints = {timeConstraints}
                             timeFormat = {this.props.timeFormat}
                             dateFormat = {this.props.dateFormat}
-                            closeOnSelect = {this.props.closeOnSelect}
+                            closeOnSelect = {false}
                             locale = {this.props.locale}
                             isValidDate = {validDate}
-                            defaultValue = {this.props.defaultValue}
+                            value = {this.state.value}
                             ref = {ref => {
                                 this.datetimeRef = ref;
                             }}

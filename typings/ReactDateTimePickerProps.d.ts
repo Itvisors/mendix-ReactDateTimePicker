@@ -22,7 +22,6 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
     showInvalidMessage: boolean;
     invalidDateMessage?: DynamicValue<string>;
     onChangeAction?: ActionValue;
-    closeOnSelect: boolean;
     disablePast: boolean;
     minDateAttribute?: EditableValue<Date>;
     maxDateAttribute?: EditableValue<Date>;
@@ -47,7 +46,6 @@ export interface ReactDateTimePickerPreviewProps extends CommonProps {
     showInvalidMessage: boolean;
     invalidDateMessage?: string;
     onChangeAction?: ActionPreview;
-    closeOnSelect: boolean;
     disablePast: boolean;
     minDateAttribute?: string;
     maxDateAttribute?: string;
@@ -72,7 +70,6 @@ export interface VisibilityMap {
     showInvalidMessage: boolean;
     invalidDateMessage: boolean;
     onChangeAction: boolean;
-    closeOnSelect: boolean;
     disablePast: boolean;
     minDateAttribute: boolean;
     maxDateAttribute: boolean;
