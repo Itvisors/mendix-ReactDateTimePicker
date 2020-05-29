@@ -9,6 +9,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - Disable dates before and/or after another date.
 - Change language settings to change default formatting.
 - Let the user type the datetime.
+- Show weeknumbers
 
 ## Configuration
 ### General
@@ -29,6 +30,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - Locale: Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
 - Picker: Whether to use the widget as datetimepicker, datepicker or timepicker
 - dateFormat: If default format of locale does not suffice, you can enter the format in here. See https://momentjs.com/docs/#/displaying/format/ for available formats.
+-Show Week Numbers: Whether or not to show weeknumbers in the datepicker
 - timeFormat: Same as dateformat
 - Integers to change min, max and step of hours, minutes and seconds. Note that maximal minute and maximal second are 59, since 60 will be 0.
 
