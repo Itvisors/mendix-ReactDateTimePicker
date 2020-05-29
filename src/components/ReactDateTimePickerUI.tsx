@@ -23,6 +23,7 @@ export interface ReactDateTimeUIProps {
     dateTimeValue?: Moment;
     minDate?: Moment;
     maxDate?: Moment;
+    showWeekNumbers?: boolean;
 }
 
 interface ReactDateTimePickerUIState {
@@ -135,6 +136,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                             ref = {ref => {
                                 this.datetimeRef = ref;
                             }}
+                            showWeekNumbers = {this.props.showWeekNumbers}
                         />
                         <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
                             <span className="glyphicon glyphicon-calendar"></span>

@@ -95,6 +95,7 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
                             dateTimeValue = {dateTimeValue}
                             minDate = {minDate}
                             maxDate = {maxDate}
+                            showWeekNumbers = {this.props.showWeekNumbers}
                         />
                         <Alert id={this.props.id + "-error"}>{validationFeedback}</Alert>
                     </Fragment>;

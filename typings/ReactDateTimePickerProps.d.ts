@@ -28,6 +28,7 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
     locale?: DynamicValue<string>;
     picker: PickerEnum;
     dateFormat?: DynamicValue<string>;
+    showWeekNumbers: boolean;
     timeFormat?: DynamicValue<string>;
     minHours: number;
     maxHours: number;
@@ -52,6 +53,7 @@ export interface ReactDateTimePickerPreviewProps extends CommonProps {
     locale?: string;
     picker: PickerEnum;
     dateFormat?: string;
+    showWeekNumbers: boolean;
     timeFormat?: string;
     minHours: number;
     maxHours: number;
@@ -76,6 +78,7 @@ export interface VisibilityMap {
     locale: boolean;
     picker: boolean;
     dateFormat: boolean;
+    showWeekNumbers: boolean;
     timeFormat: boolean;
     minHours: boolean;
     maxHours: boolean;

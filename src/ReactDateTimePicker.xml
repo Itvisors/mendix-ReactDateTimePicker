@@ -82,6 +82,10 @@
                     <translation lang="en_US"></translation>
                 </translations>
             </property>
+            <property key="showWeekNumbers" type="boolean" required="true" defaultValue="false">
+                <caption>Show Week Numbers</caption>
+                <description>Wheter or not to show week numbers in the datepicker</description> 
+            </property>
             <property key="timeFormat" type="textTemplate" required="false">
                 <caption>Time format</caption>
                 <description>See https://momentjs.com/docs/#/displaying/format/ for available formats. If left empty, the default is selected of the locale.</description> 
