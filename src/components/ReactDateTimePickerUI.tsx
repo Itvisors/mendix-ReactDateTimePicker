@@ -18,6 +18,7 @@ export interface ReactDateTimeUIProps {
     minSeconds:number;
     secondStep:number;
     disabled: boolean;
+    closeOnSelect: boolean;
     locale?: string;
     disablePast: boolean;
     dateTimeValue?: Moment;
@@ -129,7 +130,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                             timeConstraints = {timeConstraints}
                             timeFormat = {this.props.timeFormat}
                             dateFormat = {this.props.dateFormat}
-                            closeOnSelect = {false}
+                            closeOnSelect = {this.props.closeOnSelect}
                             locale = {this.props.locale}
                             isValidDate = {validDate}
                             value = {this.state.value}

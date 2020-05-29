@@ -39,6 +39,10 @@
                 <caption>OnChange action</caption>
                 <description/>
             </property>
+            <property key="closeOnSelect" type="boolean" required="true" defaultValue="false">
+                <caption>Close on select</caption>
+                <description>Close the datepicker when a date is selected</description> 
+            </property>
             <property key="disablePast" type="boolean" required="true" defaultValue="false">
                 <caption>Disable days in past</caption>
                 <description>Disable all days in the past</description> 

@@ -89,6 +89,7 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
                             minMinutes = {this.props.minMinutes}
                             maxMinutes = {this.props.maxMinutes}
                             minuteStep = {this.props.minuteStep}
+                            closeOnSelect = {this.props.closeOnSelect}
                             disabled = {this.props.dateTimeAttribute.readOnly}
                             locale = {locale}
                             disablePast = {this.props.disablePast}

@@ -10,6 +10,8 @@
   .rdtPicker {
     display: none;
     position: absolute;
+    min-width: 250px;
+    table-layout: fixed;
     padding: 4px;
     margin-top: 1px;
     z-index: 99999 !important;
@@ -95,7 +97,7 @@
     border-bottom: 1px solid #f9f9f9;
   }
   .rdtPicker .dow {
-    width: 33px;
+    width: 35px;
     border-bottom: none;
     cursor: default;
   }
