@@ -26,7 +26,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - Minimal Date: Attribute used to disable all days before this date
 - Maximal date: Attribute used to disable all days after this date
 
-### DateTimeFormat
+### DateTime Options
 - Locale: Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
 - Picker: Whether to use the widget as datetimepicker, datepicker or timepicker
 - dateFormat: If default format of locale does not suffice, you can enter the format in here. See https://momentjs.com/docs/#/displaying/format/ for available formats.
