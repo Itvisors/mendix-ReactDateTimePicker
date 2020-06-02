@@ -220,7 +220,7 @@
     cursor: default;
   }
 
-  .weekNumber {
+  .rdtPicker td.weekNumber {
     cursor: default;
     border-right: 1px solid #bbb;
     color:#999999;
