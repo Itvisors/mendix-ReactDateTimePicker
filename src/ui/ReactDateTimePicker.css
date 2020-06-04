@@ -17,7 +17,7 @@
     z-index: 99999 !important;
     background: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,.1);
-    border: 1px solid #f9f9f9;
+    border: 1px solid #bbb;
   }
   .rdtOpen .rdtPicker {
     display: block;
@@ -39,6 +39,7 @@
   .rdtPicker th {
     text-align: center;
     height: 28px;
+    
   }
   .rdtPicker td {
     cursor: pointer;
@@ -94,7 +95,7 @@
     cursor: not-allowed;
   }
   .rdtPicker th {
-    border-bottom: 1px solid #f9f9f9;
+    border-bottom: 1px solid #bbb !important;
   }
   .rdtPicker .dow {
     width: 35px;
@@ -129,13 +130,15 @@
   }
   .rdtPicker thead tr:first-child th {
     cursor: pointer;
+    border: none !important;
   }
+
   .rdtPicker thead tr:first-child th:hover {
     background: #eeeeee;
   }
   
   .rdtPicker tfoot {
-    border-top: 1px solid #f9f9f9;
+    border-top: 1px solid #bbb !important;
   }
   
   .rdtPicker button {
@@ -223,6 +226,5 @@
   .rdtPicker td.weekNumber {
     cursor: default;
     border-right: 1px solid #bbb;
-    color:#999999;
     font-weight: bold;
   }
