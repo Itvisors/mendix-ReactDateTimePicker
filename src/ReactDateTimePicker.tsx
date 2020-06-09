@@ -12,9 +12,6 @@ interface ReactDateTimePickerState {
 
 class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, ReactDateTimePickerState> {
     private readonly onBlurHandle = this.onBlur.bind(this);
-    readonly state: ReactDateTimePickerState = { 
-        validDate: true
-    };
     
     //On leave of the datepicker, set the attribute to the selected date
     private onBlur(dateTimeSelected: moment.Moment): void {
@@ -23,7 +20,6 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
             // Set the value to the attribute
             this.props.dateTimeAttribute.setValue(new Date(dateTimeSelected.toDate()))
             // Set validDate to true, to be used in the renderer
-            this.setState({validDate: true});
             if (this.props.invalidDateAttribute) {
                 this.props.invalidDateAttribute.setValue(true);
             }
@@ -35,10 +31,12 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
             }
         } else {
             // If no valid date is chosen, set validDate to false, to be used in the renderer
-            this.setState({validDate: false});
             if (this.props.invalidDateAttribute) {
                 this.props.invalidDateAttribute.setValue(false);
             }
+        }
+        if (this.props.onChangeAction && this.props.onChangeAction.canExecute) {
+            this.props.onChangeAction.execute();
         }
     }
 

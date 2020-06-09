@@ -11,7 +11,7 @@
             <systemProperty key="Label" />
             <systemProperty key="Visibility"/>
             <systemProperty key="Editability"/>
-            <property key="dateTimeAttribute" type="attribute" onChange="onChangeAction">
+            <property key="dateTimeAttribute" type="attribute">
                 <caption>DateTime</caption>
                 <description/>
                 <attributeTypes>
