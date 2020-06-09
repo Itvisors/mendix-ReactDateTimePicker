@@ -24,12 +24,21 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
             this.props.dateTimeAttribute.setValue(new Date(dateTimeSelected.toDate()))
             // Set validDate to true, to be used in the renderer
             this.setState({validDate: true});
+            if (this.props.invalidDateAttribute) {
+                this.props.invalidDateAttribute.setValue(true);
+            }
         } else if (dateTimeSelected === "") {
             //If the value is empty, set the attribute to undefined(empty)
             this.props.dateTimeAttribute.setValue(undefined)
+            if (this.props.invalidDateAttribute) {
+                this.props.invalidDateAttribute.setValue(true);
+            }
         } else {
             // If no valid date is chosen, set validDate to false, to be used in the renderer
             this.setState({validDate: false});
+            if (this.props.invalidDateAttribute) {
+                this.props.invalidDateAttribute.setValue(false);
+            }
         }
     }
 
@@ -41,9 +50,6 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
         // If the validationFeedback is set, check whether there is a validation message set
         if  (typeof this.props.dateTimeAttribute.validation !== 'undefined') {
             validationFeedback = this.props.dateTimeAttribute.validation;
-        // also check whether the widget should check for a valid date, and provide a message when date is invalid 
-        } else if (this.props.showInvalidMessage && this.state.validDate === false) {
-            validationFeedback = typeof this.props.invalidDateMessage === 'undefined' ? undefined : this.props.invalidDateMessage.value;
         }
 
         // check if locale has been set

@@ -22,16 +22,12 @@
                 <caption>Placeholder</caption>
                 <description></description> 
             </property>
-            <property key="showInvalidMessage" type="boolean" required="true" defaultValue="true">
-                <caption>Show invalid message</caption>
-                <description>Whether the widget should check whether the date is according to the given format and if not, show a message.</description> 
-            </property>
-            <property key="invalidDateMessage" type="textTemplate" required="false">
-                <caption>Invalid message</caption>
-                <description>Message to show when an invalid date is entered</description> 
-                <translations>
-                    <translation lang="en_US"></translation>
-                </translations>
+            <property key="invalidDateAttribute" type="attribute" required="false">
+                <caption>Valid date</caption>
+                <description>Boolean property controlled by the widget when input changes. Set to false if the date entered is not a valid date and to true otherwise. Value is only changed when the value in the datepicker changes, therefore initialize the value in mendix.</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
             </property>
         </propertyGroup>
         <propertyGroup caption="Behavior">

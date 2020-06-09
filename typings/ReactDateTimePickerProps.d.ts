@@ -19,8 +19,7 @@ export type PickerEnum = "datetimepicker" | "datepicker" | "timepicker";
 export interface ReactDateTimePickerContainerProps extends CommonProps {
     dateTimeAttribute: EditableValue<Date>;
     placeholder?: DynamicValue<string>;
-    showInvalidMessage: boolean;
-    invalidDateMessage?: DynamicValue<string>;
+    invalidDateAttribute?: EditableValue<boolean>;
     onChangeAction?: ActionValue;
     closeOnSelect: boolean;
     disablePast: boolean;
@@ -45,8 +44,7 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
 export interface ReactDateTimePickerPreviewProps extends CommonProps {
     dateTimeAttribute: string;
     placeholder?: string;
-    showInvalidMessage: boolean;
-    invalidDateMessage?: string;
+    invalidDateAttribute?: string;
     onChangeAction?: ActionPreview;
     closeOnSelect: boolean;
     disablePast: boolean;
@@ -71,8 +69,7 @@ export interface ReactDateTimePickerPreviewProps extends CommonProps {
 export interface VisibilityMap {
     dateTimeAttribute: boolean;
     placeholder: boolean;
-    showInvalidMessage: boolean;
-    invalidDateMessage: boolean;
+    invalidDateAttribute: boolean;
     onChangeAction: boolean;
     closeOnSelect: boolean;
     disablePast: boolean;
