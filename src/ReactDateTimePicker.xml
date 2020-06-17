@@ -24,7 +24,7 @@
             </property>
             <property key="invalidDateAttribute" type="attribute" required="false">
                 <caption>Valid date</caption>
-                <description>Boolean property controlled by the widget when input changes. Set to false if the date entered is not a valid date and to true otherwise. Value is only changed when the value in the datepicker changes, therefore initialize the value in mendix.</description>
+                <description>Boolean property controlled by the widget when input changes. Set to false if the date entered is not a valid date and to true otherwise. Value is only changed when the value in the datepicker changes, therefore initialize the value in mendix. Make sure the user has got write access.</description>
                 <attributeTypes>
                     <attributeType name="Boolean"/>
                 </attributeTypes>

@@ -20,23 +20,26 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
             // Set the value to the attribute
             this.props.dateTimeAttribute.setValue(new Date(dateTimeSelected.toDate()))
             // Set validDate to true, to be used in the renderer
-            if (this.props.invalidDateAttribute) {
-                this.props.invalidDateAttribute.setValue(true);
-            }
+            this.setInvalidDateAttribute(true);
         } else if (dateTimeSelected === "") {
             //If the value is empty, set the attribute to undefined(empty)
             this.props.dateTimeAttribute.setValue(undefined)
-            if (this.props.invalidDateAttribute) {
-                this.props.invalidDateAttribute.setValue(true);
-            }
+            this.setInvalidDateAttribute(true);
         } else {
             // If no valid date is chosen, set validDate to false, to be used in the renderer
-            if (this.props.invalidDateAttribute) {
-                this.props.invalidDateAttribute.setValue(false);
-            }
+            this.setInvalidDateAttribute(false);
         }
         if (this.props.onChangeAction && this.props.onChangeAction.canExecute) {
             this.props.onChangeAction.execute();
+        }
+    }
+
+    private setInvalidDateAttribute(newValue: boolean): void {
+        if (this.props.invalidDateAttribute) {
+            if (this.props.invalidDateAttribute.readOnly) {
+                console.warn("React DateTimePicker: User has no write access to 'Valid date' property")
+            }
+            this.props.invalidDateAttribute.setValue(newValue);
         }
     }
 
