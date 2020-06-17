@@ -17,6 +17,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - DateTime: Attribute to use.
 - Placeholder: Text to show when dateTime is empty (e.g. the format)
 - Valid date: Boolean property controlled by the widget when input changes. Set to false if the date entered is not a valid date and to true otherwise. Value is only changed when the value in the datepicker changes, therefore initialize the value in mendix.
+If you use this property, make sure the users have got write access to this attribute.
 
 ### Behavior
 - OnChange action: Action to be called when dateTime is changed.
