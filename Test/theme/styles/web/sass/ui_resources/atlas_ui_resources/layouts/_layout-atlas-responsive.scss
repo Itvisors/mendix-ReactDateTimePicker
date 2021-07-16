@@ -1,12 +1,12 @@
 /* ==========================================================================
    Atlas layout
-   
+
    Extra styling for responsive layouts
 ========================================================================== */
 .layout-atlas-responsive-default {
     $sidebar-width: 60px;
 
-    @media (min-width: $screen-sm) {
+    @media (min-width: $screen-md) {
         .mx-scrollcontainer:not(.mx-scrollcontainer-open) > .region-sidebar {
             width: $sidebar-width !important;
 
@@ -39,10 +39,22 @@
         }
     }
 
+
+    .mx-scrollcontainer-slide {
+
+        &.mx-scrollcontainer-open > .region-sidebar {
+            width: $sidebar-width !important;
+        }
+    }
+
     // Push aside for mobile
-    @media (max-width: $screen-xs-max) {
-        .mx-scrollcontainer-open {
+    @media (max-width: $screen-sm-max) {
+        .mx-scrollcontainer-open:not(.mx-scrollcontainer-slide) {
             width: 1100px;
+        }
+
+        .mx-scrollcontainer-slide .toggle-btn {
+            display: inline-block !important;
         }
     }
 
@@ -89,6 +101,12 @@
 
 // Topbar variant
 .layout-atlas-responsive-topbar {
+    .mx-scrollcontainer-slide,
+    .mx-scrollcontainer-push {
+        &:not(.mx-scrollcontainer-open) > .region-sidebar {
+            visibility: hidden;
+        }
+    }
 }
 
 // All responsive layouts
@@ -99,9 +117,27 @@
         .toggle-btn {
             display: none;
 
-            @media (max-width: $screen-xs-max) {
+            @media (max-width: $screen-sm-max) {
                 display: inline-block;
             }
+        }
+    }
+
+    .mx-scrollcontainer-slide {
+        &:not(.mx-scrollcontainer-open) > .region-sidebar {
+            overflow: hidden;
+        }
+
+        &.mx-scrollcontainer-open > .region-sidebar {
+
+            & > .mx-scrollcontainer-wrapper {
+                position: relative;
+            }
+        }
+
+        .region-sidebar > .mx-scrollcontainer-wrapper {
+            z-index: 2;
+            background-color: inherit;
         }
     }
 }
@@ -109,7 +145,7 @@
 // Fix Safari issue of sidebar disappearing
 .profile-tablet {
     .mx-scrollcontainer:not(.mx-scrollcontainer-open) > .region-sidebar {
-        overflow-y: auto;
+        overflow-y: hidden;
 
         .mx-scrollcontainer-wrapper {
             overflow: visible;

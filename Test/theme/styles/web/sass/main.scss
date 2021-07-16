@@ -52,6 +52,7 @@
 @import 'core/widgets/navigationlist';
 @import 'core/widgets/navigationtree';
 @import 'core/helpers/navigationtree';
+@import 'core/widgets/popupmenu';
 @import 'core/widgets/simplemenubar';
 @import 'core/helpers/simplemenubar';
 @import 'core/widgets/radiobuttons';
@@ -65,6 +66,7 @@
 @import 'core/helpers/typography';
 @import 'core/widgets/layoutgrid';
 @import 'core/widgets/progress';
+@import 'core/widgets/timeline';
 @import 'core/helpers/helperclasses';
 
 // Custom widgets
@@ -79,7 +81,6 @@
 //================================= CUSTOM =================================\\
 
 // Building blocks
-@import 'ui_resources/atlas_ui_resources/buildingblocks/alignment-block';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/breadcrumb';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/card';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/chat';
@@ -88,7 +89,6 @@
 @import 'ui_resources/atlas_ui_resources/buildingblocks/pageheader';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/heroheader';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/formblock';
-@import 'ui_resources/atlas_ui_resources/buildingblocks/list';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/master-detail';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/userprofile';
 @import 'ui_resources/atlas_ui_resources/buildingblocks/wizard';
@@ -99,7 +99,6 @@
 @import 'ui_resources/atlas_ui_resources/layouts/layout-atlas-phone';
 @import 'ui_resources/atlas_ui_resources/layouts/layout-atlas-responsive';
 @import 'ui_resources/atlas_ui_resources/layouts/layout-atlas-tablet';
-@import 'ui_resources/atlas_ui_resources/layouts/layout-atlas-device-wrapper';
 
 // Custom
 @import 'app/custom';

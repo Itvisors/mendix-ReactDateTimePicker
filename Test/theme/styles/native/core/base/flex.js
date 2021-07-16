@@ -1,10 +1,11 @@
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+/*
 
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
+
+*/
 //== Flex layout
 export const flexMain = {
     container: {
@@ -45,11 +46,11 @@ export const flexWrap = {
         flexWrap: "wrap",
     },
 };
-
-export const childrenCenter = {
+export const justifyContentStart = {
     container: {
-        ...justifyContentCenter,
-        ...alignChildrenCenter,
+        // justifyContent aligns children in the main direction.
+        // For example, if children are flowing vertically, justifyContent controls how they align vertically.
+        justifyContent: "flex-start",
     },
 };
 export const justifyContentCenter = {
@@ -87,6 +88,13 @@ export const justifyContentSpaceEvenly = {
         justifyContent: "space-evenly",
     },
 };
+export const alignChildrenStart = {
+    container: {
+        // alignItems aligns children in the cross direction.
+        // For example, if children are flowing vertically, alignItems controls how they align horizontally.
+        alignItems: "flex-start",
+    },
+};
 export const alignChildrenCenter = {
     container: {
         // alignItems aligns children in the cross direction.
@@ -112,7 +120,20 @@ export const alignChildrenBaseline = {
     container: {
         // alignContent aligns children in the cross direction.
         // For example, if children are flowing vertically, alignContent controls how they align horizontally.
-        alignContent: "baseline",
+        alignItems: "baseline",
+    },
+};
+export const childrenCenter = {
+    container: {
+        ...justifyContentCenter.container,
+        ...alignChildrenCenter.container,
+    },
+};
+export const alignContentStart = {
+    container: {
+        // alignContent aligns rows of children in the cross direction.
+        // For example, if children are flowing vertically, alignContent controls how they align horizontally.
+        alignContent: "flex-start",
     },
 };
 export const alignContentCenter = {

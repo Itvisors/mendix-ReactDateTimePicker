@@ -12,7 +12,7 @@
 ========================================================================== */
 // Bordered
 .listview-bordered.mx-listview {
-    li {
+    & > ul > li {
         border: 1px solid $grid-border-color;
         border-top: 0;
 
@@ -29,14 +29,14 @@
 
 // Striped
 .listview-striped.mx-listview {
-    li:nth-child(2n + 1) {
+    & > ul > li:nth-child(2n + 1) {
         background-color: $grid-bg-striped;
     }
 }
 
 // Items as seperated blocks
 .listview-seperated.mx-listview {
-    li {
+    & > ul > li {
         margin-bottom: $gutter-size;
         border-width: 1px;
         border-style: solid;
@@ -46,7 +46,7 @@
 
 // Remove all styling
 .listview-stylingless.mx-listview {
-    li {
+    & > ul > li {
         padding: 0;
         cursor: default;
         border: 0;
@@ -72,7 +72,7 @@
 
 // Hover style activated
 .listview-hover.mx-listview {
-    li {
+    & > ul > li {
         &:hover,
         &:focus,
         &:active {
@@ -91,13 +91,13 @@
 
 // Templategrid Row Sizes
 .listview-lg.mx-listview {
-    li {
+    & > ul > li {
         padding: ($grid-padding-top * 2) ($grid-padding-right * 2) ($grid-padding-bottom * 2) ($grid-padding-left * 2);
     }
 }
 
 .listview-sm.mx-listview {
-    li {
+    & > ul > li {
         padding: ($grid-padding-top / 2) ($grid-padding-right / 2) ($grid-padding-bottom / 2) ($grid-padding-left / 2);
     }
 }
@@ -127,7 +127,7 @@
             padding-right: $gutter-size;
             padding-left: $gutter-size;
             border: 0;
-            @media (max-width: $screen-sm-max) {
+            @media (max-width: $screen-md-max) {
                 width: 100% !important;
             }
 
@@ -185,7 +185,7 @@
         width: 8.33333333% !important;
     }
 
-    @media (min-width: $screen-sm) {
+    @media (min-width: $screen-md) {
         &.lv-col-sm-12 > ul > li {
             width: 100% !important;
         }
@@ -223,7 +223,7 @@
             width: 8.33333333% !important;
         }
     }
-    @media (min-width: $screen-md) {
+    @media (min-width: $screen-lg) {
         &.lv-col-md-12 > ul > li {
             width: 100% !important;
         }
@@ -261,7 +261,7 @@
             width: 16.66666667% !important;
         }
     }
-    @media (min-width: $screen-lg) {
+    @media (min-width: $screen-xl) {
         &.lv-col-lg-12 > ul > li {
             width: 100% !important;
         }
