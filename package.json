@@ -6,35 +6,31 @@
   "copyright": "ITvisors (2019)",
   "author": "Johan Munneke",
   "config": {
-    "widgetPath": "./Test//widgets",
     "projectPath": "./Test//",
     "mendixHost": "http://localhost:8080",
     "developmentPort": "3000"
   },
   "packagePath": "itvisors",
   "scripts": {
-    "start": "concurrently \"pluggable-widgets-tools start:server --open\" \"npm:dev\"",
-    "dev": "pluggable-widgets-tools start:ts",
-    "build": "pluggable-widgets-tools build:ts",
+    "start": "pluggable-widgets-tools start:server --open",
+    "dev": "pluggable-widgets-tools start:web",
+    "build": "pluggable-widgets-tools build:web",
     "lint": "pluggable-widgets-tools lint",
     "lint:fix": "pluggable-widgets-tools lint:fix",
     "prerelease": "npm run lint",
-    "release": "pluggable-widgets-tools release:ts"
+    "release": "pluggable-widgets-tools release:web"
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^8.0.0",
+    "@mendix/pluggable-widgets-tools": "^8.18.1",
     "@types/big.js": "^4.0.5",
     "@types/classnames": "^2.2.4",
-    "@types/jest": "^24.0.0",
-    "@types/react": "^16.8.17",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-test-renderer": "^16.8.1"
+    "@types/react": "~16.9.0",
+    "@types/react-dom": "~16.9.0"
   },
   "dependencies": {
-    "big.js": "^5.2.2",
     "classnames": "^2.2.6",
-    "moment": "^2.24.0",
-    "react-datetime": "^2.16.3"
+    "moment": "^2.29.1",
+    "react-datetime": "^3.0.4"
   }
 }

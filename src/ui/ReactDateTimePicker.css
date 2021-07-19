@@ -7,6 +7,11 @@
     width:100%;
     flex: 1;
   }
+
+  .rdt input {
+    width: 100%;
+  }
+  
   .rdtPicker {
     display: none;
     position: absolute;
