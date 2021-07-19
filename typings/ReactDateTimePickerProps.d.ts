@@ -1,22 +1,19 @@
 /**
  * This file was generated from ReactDateTimePicker.xml
  * WARNING: All changes made to this file will be overwritten
- * @author Mendix Widgets Team
+ * @author Mendix UI Content Team
  */
 import { CSSProperties } from "react";
-import { ActionPreview } from "@mendix/pluggable-widgets-typing-generator/dist/typings";
 import { ActionValue, DynamicValue, EditableValue } from "mendix";
-
-interface CommonProps {
-    id: string;
-    class: string;
-    style?: CSSProperties;
-    tabIndex: number;
-}
 
 export type PickerEnum = "datetimepicker" | "datepicker" | "timepicker";
 
-export interface ReactDateTimePickerContainerProps extends CommonProps {
+export interface ReactDateTimePickerContainerProps {
+    name: string;
+    class: string;
+    style?: CSSProperties;
+    tabIndex?: number;
+    id: string;
     dateTimeAttribute: EditableValue<Date>;
     placeholder?: DynamicValue<string>;
     invalidDateAttribute?: EditableValue<boolean>;
@@ -41,52 +38,29 @@ export interface ReactDateTimePickerContainerProps extends CommonProps {
     secondStep: number;
 }
 
-export interface ReactDateTimePickerPreviewProps extends CommonProps {
+export interface ReactDateTimePickerPreviewProps {
+    class: string;
+    style: string;
     dateTimeAttribute: string;
-    placeholder?: string;
-    invalidDateAttribute?: string;
-    onChangeAction?: ActionPreview;
+    placeholder: string;
+    invalidDateAttribute: string;
+    onChangeAction: {} | null;
     closeOnSelect: boolean;
     disablePast: boolean;
-    minDateAttribute?: string;
-    maxDateAttribute?: string;
-    locale?: string;
+    minDateAttribute: string;
+    maxDateAttribute: string;
+    locale: string;
     picker: PickerEnum;
-    dateFormat?: string;
+    dateFormat: string;
     showWeekNumbers: boolean;
-    timeFormat?: string;
-    minHours: number;
-    maxHours: number;
-    hourStep: number;
-    minMinutes: number;
-    maxMinutes: number;
-    minuteStep: number;
-    minSeconds: number;
-    maxSeconds: number;
-    secondStep: number;
-}
-
-export interface VisibilityMap {
-    dateTimeAttribute: boolean;
-    placeholder: boolean;
-    invalidDateAttribute: boolean;
-    onChangeAction: boolean;
-    closeOnSelect: boolean;
-    disablePast: boolean;
-    minDateAttribute: boolean;
-    maxDateAttribute: boolean;
-    locale: boolean;
-    picker: boolean;
-    dateFormat: boolean;
-    showWeekNumbers: boolean;
-    timeFormat: boolean;
-    minHours: boolean;
-    maxHours: boolean;
-    hourStep: boolean;
-    minMinutes: boolean;
-    maxMinutes: boolean;
-    minuteStep: boolean;
-    minSeconds: boolean;
-    maxSeconds: boolean;
-    secondStep: boolean;
+    timeFormat: string;
+    minHours: number | null;
+    maxHours: number | null;
+    hourStep: number | null;
+    minMinutes: number | null;
+    maxMinutes: number | null;
+    minuteStep: number | null;
+    minSeconds: number | null;
+    maxSeconds: number | null;
+    secondStep: number | null;
 }

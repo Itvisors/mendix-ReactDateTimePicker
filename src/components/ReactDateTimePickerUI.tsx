@@ -1,5 +1,5 @@
 import { Component, ReactNode, createElement, Fragment } from "react";
-import Datetime = require("react-datetime");
+import Datetime from 'react-datetime';
 
 import moment, { Moment } from 'moment';
 
@@ -32,9 +32,9 @@ interface ReactDateTimePickerUIState {
 }
 
 export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
-    private readonly onBlurHandle = this.onBlur.bind(this);
+    private readonly onCloseHandle = this.onClose.bind(this);
     private readonly onChangeHandle = this.onChange.bind(this);
-    private readonly onFocusHandle = this.onFocus.bind(this);
+    private readonly onOpenHandle = this.onOpen.bind(this);
     private readonly OnButtonClickHandle = this.openCalendar.bind(this);
     private closeDate = Date.now();
     datetimeRef: any;
@@ -42,7 +42,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         value: undefined
     };
     
-    private onBlur(dateTimeSelected: moment.Moment): void {
+    private onClose(dateTimeSelected: moment.Moment): void {
         //on leave, call onclick method and pass the selected datetime
         this.closeDate = Date.now();
         this.props.onBlur(dateTimeSelected);
@@ -66,16 +66,16 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         this.setState({value: this.props.dateTimeValue})
     }
 
-    private onFocus(): void {
+    private onOpen(): void {
         //When button is clicked, open the calendar
-        this.datetimeRef.openCalendar();
+        this.datetimeRef._openCalendar();
     }
 
     private openCalendar(): void {
         //if button is clicked, first onBlur is triggered, so when this is the case, the calendar should not be opened
         let timeElapsed = Date.now() - this.closeDate;
         if (timeElapsed > 100) {
-            this.datetimeRef.openCalendar();
+            this.datetimeRef._openCalendar();
         } 
     }
 
@@ -122,9 +122,9 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         return <Fragment>
                     <div className='mx-compound-control'>
                         <Datetime 
-                            onBlur={this.onBlurHandle}
+                            onClose={this.onCloseHandle}
                             onChange={this.onChangeHandle}
-                            onFocus={this.onFocusHandle}
+                            onOpen={this.onOpenHandle}
                             inputProps = {inputProps}
                             timeConstraints = {timeConstraints}
                             timeFormat = {this.props.timeFormat}
@@ -136,7 +136,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                             ref = {ref => {
                                 this.datetimeRef = ref;
                             }}
-                            showWeekNumbers = {this.props.showWeekNumbers}
+                            //showWeekNumbers = {this.props.showWeekNumbers}
                         />
                         <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
                             <span className="glyphicon glyphicon-calendar"></span>

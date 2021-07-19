@@ -1,8 +1,7 @@
 import { Component, ReactNode, createElement, Fragment } from "react";
 import { ReactDateTimeUI } from "./components/ReactDateTimePickerUI";
-import { hot } from "react-hot-loader/root";
 import { ReactDateTimePickerContainerProps } from "../typings/ReactDateTimePickerProps";
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 import { Alert } from "./components/Alert";
 import "./ui/ReactDateTimePicker.css";
 
@@ -10,7 +9,7 @@ interface ReactDateTimePickerState {
     validDate: boolean;
 }
 
-class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, ReactDateTimePickerState> {
+export default class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, ReactDateTimePickerState> {
     private readonly onBlurHandle = this.onBlur.bind(this);
     
     //On leave of the datepicker, set the attribute to the selected date
@@ -110,5 +109,3 @@ class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, R
         }
     }
 }
-
-export default hot(ReactDateTimePicker);
