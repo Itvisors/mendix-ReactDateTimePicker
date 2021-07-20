@@ -6,6 +6,8 @@
 import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
+export type ReadOnlyStyleEnum = "control" | "text";
+
 export type PickerEnum = "datetimepicker" | "datepicker" | "timepicker";
 
 export interface ReactDateTimePickerContainerProps {
@@ -14,6 +16,7 @@ export interface ReactDateTimePickerContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     id: string;
+    readOnlyStyle: ReadOnlyStyleEnum;
     dateTimeAttribute: EditableValue<Date>;
     placeholder?: DynamicValue<string>;
     invalidDateAttribute?: EditableValue<boolean>;
@@ -41,6 +44,7 @@ export interface ReactDateTimePickerContainerProps {
 export interface ReactDateTimePickerPreviewProps {
     class: string;
     style: string;
+    readOnlyStyle: ReadOnlyStyleEnum;
     dateTimeAttribute: string;
     placeholder: string;
     invalidDateAttribute: string;

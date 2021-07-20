@@ -11,6 +11,14 @@
             <systemProperty key="Label" />
             <systemProperty key="Visibility"/>
             <systemProperty key="Editability"/>
+            <property key="readOnlyStyle" type="enumeration" required="true" defaultValue="control">
+                <caption>Read-only style</caption>
+                <description/>
+                <enumerationValues>
+                    <enumerationValue key="control">Control</enumerationValue>
+                    <enumerationValue key="text">Text</enumerationValue>
+                </enumerationValues>
+            </property>
             <property key="dateTimeAttribute" type="attribute">
                 <caption>DateTime</caption>
                 <description/>

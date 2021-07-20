@@ -25,6 +25,7 @@ export interface ReactDateTimeUIProps {
     minDate?: Moment;
     maxDate?: Moment;
     showWeekNumbers?: boolean;
+    readOnlyAsText: boolean;
 }
 
 interface ReactDateTimePickerUIState {
@@ -116,11 +117,15 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
             };
         }
         let classNamesButton = "btn mx-button spacing-outer-left";
+        let classNameDiv = "mx-compound-control";
         if (this.props.disabled) {
             classNamesButton += " disabled";
+            if (this.props.readOnlyAsText) {
+                classNameDiv = "form-control-static rdtAsText"
+            }
         }
         return <Fragment>
-                    <div className='mx-compound-control'>
+                    <div className={classNameDiv}>
                         <Datetime 
                             onBlur={this.onBlurHandle}
                             onChange={this.onChangeHandle}
@@ -138,9 +143,10 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                             }}
                             showWeekNumbers = {this.props.showWeekNumbers}
                         />
-                        <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
-                            <span className="glyphicon glyphicon-calendar"></span>
-                        </button>
+                        {this.props.readOnlyAsText ? undefined :
+                            <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
+                                <span className="glyphicon glyphicon-calendar"></span>
+                            </button>}
                     </div>
                 </Fragment>;
     }

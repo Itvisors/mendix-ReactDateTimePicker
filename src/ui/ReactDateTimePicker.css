@@ -233,3 +233,17 @@
     border-right: 1px solid #bbb;
     font-weight: bold;
   }
+
+
+  /* read only version */
+
+  .form-control-static.rdtAsText  {
+    padding: 0;
+  }
+
+  .form-control-static.rdtAsText  input.form-control{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px;
+    cursor: text;
+  }
