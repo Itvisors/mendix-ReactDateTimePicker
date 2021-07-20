@@ -10,10 +10,12 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - Change language settings to change default formatting.
 - Let the user type the datetime.
 - Show weeknumbers
+- Display as text only
 
 ## Configuration
 ### General
 - Default mendix behavior for labeling, visibility and editability.
+- Read-only style: How to show the widget when disabled: as control or as text, in line with mendix styling
 - DateTime: Attribute to use.
 - Placeholder: Text to show when dateTime is empty (e.g. the format)
 - Valid date: Boolean property controlled by the widget when input changes. Set to false if the date entered is not a valid date and to true otherwise. Value is only changed when the value in the datepicker changes, therefore initialize the value in mendix.
