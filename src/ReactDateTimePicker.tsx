@@ -76,6 +76,10 @@ export default class ReactDateTimePicker extends Component<ReactDateTimePickerCo
         let maxDate = typeof this.props.maxDateAttribute === 'undefined' ? undefined : 
         typeof this.props.maxDateAttribute.value === 'undefined' ? undefined : moment(this.props.maxDateAttribute.value);
 
+		// set the initial view data if provided (can be undefined)
+		let initialViewDate = typeof this.props.initialViewDateAttribute === 'undefined' ? undefined : 
+        typeof this.props.initialViewDateAttribute.value === 'undefined' ? undefined : moment(this.props.initialViewDateAttribute.value);
+
         // if widget is readOnly and show as text, only show the text
         const disabled = this.props.dateTimeAttribute.readOnly;
         const readOnlyAsText = disabled && this.props.readOnlyStyle === 'text';
@@ -106,7 +110,8 @@ export default class ReactDateTimePicker extends Component<ReactDateTimePickerCo
                             dateTimeValue = {dateTimeValue}
                             minDate = {minDate}
                             maxDate = {maxDate}
-                            showWeekNumbers = {this.props.showWeekNumbers}
+                            initialViewDate = {initialViewDate}
+                            //showWeekNumbers = {this.props.showWeekNumbers}
                             readOnlyAsText = {readOnlyAsText}
                         />
                         <Alert id={this.props.id + "-error"}>{validationFeedback}</Alert>

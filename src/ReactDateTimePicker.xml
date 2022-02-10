@@ -65,6 +65,13 @@
                     <attributeType name="DateTime"/>
                 </attributeTypes>
             </property>
+			<property key="initialViewDateAttribute" type="attribute" required="false">
+                <caption>Initial View Date</caption>
+                <description>Attribute used to set the default date the picker opens on (optional)</description> 
+                <attributeTypes>
+                    <attributeType name="DateTime"/>
+                </attributeTypes>
+            </property>
         </propertyGroup>
         <propertyGroup caption="DateTime Options">
             <property key="locale" type="textTemplate" required="false">
@@ -90,10 +97,12 @@
                     <translation lang="en_US"></translation>
                 </translations>
             </property>
+            <!--
             <property key="showWeekNumbers" type="boolean" required="true" defaultValue="false">
                 <caption>Show Week Numbers</caption>
                 <description>Wheter or not to show week numbers in the datepicker</description> 
             </property>
+            -->
             <property key="timeFormat" type="textTemplate" required="false">
                 <caption>Time format</caption>
                 <description>See https://momentjs.com/docs/#/displaying/format/ for available formats. If left empty, the default is selected of the locale.</description> 

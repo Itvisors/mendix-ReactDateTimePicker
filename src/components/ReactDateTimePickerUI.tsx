@@ -24,6 +24,7 @@ export interface ReactDateTimeUIProps {
     dateTimeValue?: Moment;
     minDate?: Moment;
     maxDate?: Moment;
+    initialViewDate?: Moment;
     showWeekNumbers?: boolean;
     readOnlyAsText: boolean;
 }
@@ -138,10 +139,11 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                             locale = {this.props.locale}
                             isValidDate = {validDate}
                             value = {this.state.value}
+                            viewDate = {this.props.initialViewDate}
                             ref = {ref => {
                                 this.datetimeRef = ref;
                             }}
-                            showWeekNumbers = {this.props.showWeekNumbers}
+                            //showWeekNumbers = {this.props.showWeekNumbers}
                         />
                         {this.props.readOnlyAsText ? undefined :
                             <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>

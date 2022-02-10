@@ -25,10 +25,10 @@ export interface ReactDateTimePickerContainerProps {
     disablePast: boolean;
     minDateAttribute?: EditableValue<Date>;
     maxDateAttribute?: EditableValue<Date>;
+    initialViewDateAttribute?: EditableValue<Date>;
     locale?: DynamicValue<string>;
     picker: PickerEnum;
     dateFormat?: DynamicValue<string>;
-    showWeekNumbers: boolean;
     timeFormat?: DynamicValue<string>;
     minHours: number;
     maxHours: number;
@@ -53,10 +53,10 @@ export interface ReactDateTimePickerPreviewProps {
     disablePast: boolean;
     minDateAttribute: string;
     maxDateAttribute: string;
+    initialViewDateAttribute: string;
     locale: string;
     picker: PickerEnum;
     dateFormat: string;
-    showWeekNumbers: boolean;
     timeFormat: string;
     minHours: number | null;
     maxHours: number | null;
