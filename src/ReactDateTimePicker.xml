@@ -65,6 +65,13 @@
                     <attributeType name="DateTime"/>
                 </attributeTypes>
             </property>
+            <property key="initialViewDateAttribute" type="attribute" required="false">
+                <caption>Initial View Date</caption>
+                <description>Attribute used to set the default date the picker opens on (optional)</description> 
+                <attributeTypes>
+                    <attributeType name="DateTime"/>
+                </attributeTypes>
+            </property>
         </propertyGroup>
         <propertyGroup caption="DateTime Options">
             <property key="locale" type="textTemplate" required="false">

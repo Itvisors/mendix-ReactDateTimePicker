@@ -25,6 +25,7 @@ export interface ReactDateTimePickerContainerProps {
     disablePast: boolean;
     minDateAttribute?: EditableValue<Date>;
     maxDateAttribute?: EditableValue<Date>;
+    initialViewDateAttribute?: EditableValue<Date>;
     locale?: DynamicValue<string>;
     picker: PickerEnum;
     dateFormat?: DynamicValue<string>;
@@ -53,6 +54,7 @@ export interface ReactDateTimePickerPreviewProps {
     disablePast: boolean;
     minDateAttribute: string;
     maxDateAttribute: string;
+    initialViewDateAttribute: string;
     locale: string;
     picker: PickerEnum;
     dateFormat: string;
