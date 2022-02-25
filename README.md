@@ -10,6 +10,7 @@ DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
 - Change language settings to change default formatting.
 - Let the user type the datetime.
 - Show weeknumbers
+- Choose an initial datetime view
 - Display as text only
 
 ## Configuration
@@ -27,6 +28,7 @@ If you use this property, make sure the users have got write access to this attr
 - Disable days in past: Whether or not to disable all days in the past.
 - Minimal Date: Attribute used to disable all days before this date
 - Maximal date: Attribute used to disable all days after this date
+- Initial View Date: Choose an initial datetime to default open on
 
 ### DateTime Options
 - Locale: Change language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
