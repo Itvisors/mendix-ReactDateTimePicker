@@ -22,15 +22,14 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^8.18.1",
-    "@types/big.js": "^4.0.5",
-    "@types/classnames": "^2.2.4",
-    "@types/react": "~16.9.0",
-    "@types/react-dom": "~16.9.0"
+    "@mendix/pluggable-widgets-tools": "^9.6.2",
+    "@types/big.js": "^6.0.2",
+    "@types/react": "~17.0.1",
+    "@types/react-dom": "~17.0.1"
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "moment": "^2.29.1",
-    "react-datetime": "^2.16.3"
+    "moment": "^2.29.4",
+    "react-datetime": "~2.16.3"
   }
 }
