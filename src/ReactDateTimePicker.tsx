@@ -10,6 +10,7 @@ interface ReactDateTimePickerState {
 }
 
 export default class ReactDateTimePicker extends Component<ReactDateTimePickerContainerProps, ReactDateTimePickerState> {
+    
     private readonly onBlurHandle = this.onBlur.bind(this);
     
     //On leave of the datepicker, set the attribute to the selected date

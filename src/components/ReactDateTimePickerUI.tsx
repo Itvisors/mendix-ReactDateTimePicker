@@ -1,4 +1,4 @@
-import { Component, ReactNode, createElement, Fragment } from "react";
+import { Component, ReactNode, createElement, Fragment, createRef } from "react";
 import Datetime from 'react-datetime';
 
 import moment, { Moment } from 'moment';
@@ -38,20 +38,32 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     private readonly onChangeHandle = this.onChange.bind(this);
     private readonly onFocusHandle = this.onFocus.bind(this);
     private readonly OnButtonClickHandle = this.openCalendar.bind(this);
+    private readonly onScroll = this.calculatePosition.bind(this);
     private closeDate = Date.now();
     datetimeRef: any;
+    widgetRef = createRef();
     readonly state: ReactDateTimePickerUIState = { 
         value: undefined
     };
+    private isOpen = false;
     
     private onBlur(dateTimeSelected: moment.Moment): void {
         //on leave, call onclick method and pass the selected datetime
         this.closeDate = Date.now();
         this.props.onBlur(dateTimeSelected);
+        this.isOpen = false;
     }
 
     private onChange(dateTimeSelected: moment.Moment): void {
         this.setState({value: dateTimeSelected});
+    }
+
+    componentDidMount(): void {
+        document.addEventListener('scroll', this.onScroll, true);
+    }
+
+    componentWillUnmount(): void {
+        document.removeEventListener('scroll', this.onScroll, true);
     }
 
     componentDidUpdate(prevProps: ReactDateTimeUIProps) {
@@ -64,13 +76,11 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         }
     }
 
-    componentDidMount() {
-        this.setState({value: this.props.dateTimeValue})
-    }
-
     private onFocus(): void {
         //When button is clicked, open the calendar
         this.datetimeRef.openCalendar();
+        this.isOpen = true;
+        this.calculatePosition();
     }
 
     private openCalendar(): void {
@@ -78,7 +88,22 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         let timeElapsed = Date.now() - this.closeDate;
         if (timeElapsed > 100) {
             this.datetimeRef.openCalendar();
+            this.isOpen = true;
+            this.calculatePosition();
         } 
+    }
+
+    /**
+     * Calculate the position of the datepicker. Will be based on the input element, since it can be scrolled while open.
+     */
+     calculatePosition(): void {
+        if (this.isOpen && this.widgetRef.current !== null) {
+            let widgetElement = this.widgetRef.current as HTMLElement;
+            let datePicker = widgetElement.getElementsByClassName('rdtPicker') as HTMLCollectionOf<HTMLElement>;
+            let widgetRect = widgetElement.getBoundingClientRect();
+            datePicker[0].style.top = widgetRect.bottom + 'px';
+            datePicker[0].style.left = widgetRect.left + 'px';
+        }
     }
 
 
@@ -126,7 +151,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
             }
         }
         return <Fragment>
-                    <div className={classNameDiv}>
+                    <div className={classNameDiv} ref = {this.widgetRef as React.RefObject<HTMLDivElement>}>
                         <Datetime 
                             onBlur={this.onBlurHandle}
                             onChange={this.onChangeHandle}
