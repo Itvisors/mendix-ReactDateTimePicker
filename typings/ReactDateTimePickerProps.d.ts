@@ -3,7 +3,6 @@
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix UI Content Team
  */
-import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
 export type ReadOnlyStyleEnum = "control" | "text";
@@ -12,8 +11,6 @@ export type PickerEnum = "datetimepicker" | "datepicker" | "timepicker";
 
 export interface ReactDateTimePickerContainerProps {
     name: string;
-    class: string;
-    style?: CSSProperties;
     tabIndex?: number;
     id: string;
     readOnlyStyle: ReadOnlyStyleEnum;
@@ -43,8 +40,7 @@ export interface ReactDateTimePickerContainerProps {
 }
 
 export interface ReactDateTimePickerPreviewProps {
-    class: string;
-    style: string;
+    readOnly: boolean;
     readOnlyStyle: ReadOnlyStyleEnum;
     dateTimeAttribute: string;
     placeholder: string;
