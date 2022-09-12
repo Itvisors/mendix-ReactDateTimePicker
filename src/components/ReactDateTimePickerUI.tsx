@@ -60,6 +60,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     componentDidMount(): void {
         document.addEventListener('scroll', this.onScroll, true);
+        this.setState({value: this.props.dateTimeValue})
     }
 
     componentWillUnmount(): void {
@@ -99,10 +100,10 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
      calculatePosition(): void {
         if (this.isOpen && this.widgetRef.current !== null) {
             let widgetElement = this.widgetRef.current as HTMLElement;
-            let datePicker = widgetElement.getElementsByClassName('rdtPicker') as HTMLCollectionOf<HTMLElement>;
+            let datePicker = widgetElement.getElementsByClassName('rdtPicker')[0] as HTMLElement;
             let widgetRect = widgetElement.getBoundingClientRect();
-            datePicker[0].style.top = widgetRect.bottom + 'px';
-            datePicker[0].style.left = widgetRect.left + 'px';
+            datePicker.style.top = widgetRect.bottom + 'px';
+            datePicker.style.left = widgetRect.left + 'px';
         }
     }
 
