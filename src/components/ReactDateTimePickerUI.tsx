@@ -144,7 +144,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
             };
         }
         let classNamesButton = "btn mx-button spacing-outer-left";
-        let classNameDiv = "mx-compound-control";
+        let classNameDiv = "reactDateTimePicker mx-compound-control";
         if (this.props.disabled) {
             classNamesButton += " disabled";
             if (this.props.readOnlyAsText) {
