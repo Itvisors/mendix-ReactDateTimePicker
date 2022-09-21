@@ -99,10 +99,18 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
      */
      calculatePosition(): void {
         if (this.isOpen && this.widgetRef.current !== null) {
-            let widgetElement = this.widgetRef.current as HTMLElement;
+            const widgetElement = this.widgetRef.current as HTMLElement;
             let datePicker = widgetElement.getElementsByClassName('rdtPicker')[0] as HTMLElement;
-            let widgetRect = widgetElement.getBoundingClientRect();
-            datePicker.style.top = widgetRect.bottom + 'px';
+            const widgetRect = widgetElement.getBoundingClientRect();
+            //Check the margin from the widget to the bottom of the screen, to determine if datepicker should be shown below or above input field
+            const widgetMarginBottom = window.innerHeight - widgetRect.bottom;
+            if (widgetMarginBottom < datePicker.scrollHeight) {
+                datePicker.style.bottom = (window.innerHeight - widgetRect.top) + 'px';
+                datePicker.style.top = '';
+            } else {
+                datePicker.style.top = widgetRect.bottom + 'px';
+                datePicker.style.bottom = '';
+            }
             datePicker.style.left = widgetRect.left + 'px';
         }
     }
