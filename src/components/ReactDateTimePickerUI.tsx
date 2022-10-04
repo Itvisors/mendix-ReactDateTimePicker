@@ -2,6 +2,7 @@ import { Component, ReactNode, createElement, Fragment, createRef } from "react"
 import Datetime from 'react-datetime';
 
 import moment, { Moment } from 'moment';
+import 'moment/min/locales.min';
 
 export interface ReactDateTimeUIProps {
     onBlur: (dateTimeSelected: moment.Moment) => void;
