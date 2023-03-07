@@ -160,6 +160,10 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                 classNameDiv = "form-control-static rdtAsText"
             }
         }
+        let viewDate = this.props.initialViewDate;
+        if (moment.isMoment(this.state.value)) {
+            viewDate = this.state.value;
+        }
         return <Fragment>
                     <div className={classNameDiv} ref = {this.widgetRef as React.RefObject<HTMLDivElement>}>
                         <Datetime 
@@ -174,7 +178,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                             locale = {this.props.locale}
                             isValidDate = {validDate}
                             value = {this.state.value}
-                            viewDate = {this.state.value ? this.state.value : this.props.initialViewDate}
+                            viewDate = {viewDate}
                             ref = {ref => {
                                 this.datetimeRef = ref;
                             }}
