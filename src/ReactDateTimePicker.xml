@@ -65,12 +65,10 @@
                     <attributeType name="DateTime"/>
                 </attributeTypes>
             </property>
-            <property key="initialViewDateAttribute" type="attribute" required="false">
+            <property key="initialViewDate" type="expression" required="false">
                 <caption>Initial View Date</caption>
-                <description>Attribute used to set the default date the picker opens on (optional)</description> 
-                <attributeTypes>
-                    <attributeType name="DateTime"/>
-                </attributeTypes>
+                <description>Attribute used to set the default date the picker opens on when no date is selected.</description> 
+                <returnType type="DateTime" />
             </property>
         </propertyGroup>
         <propertyGroup caption="DateTime Options">

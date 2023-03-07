@@ -78,8 +78,8 @@ export default class ReactDateTimePicker extends Component<ReactDateTimePickerCo
         typeof this.props.maxDateAttribute.value === 'undefined' ? undefined : moment(this.props.maxDateAttribute.value);
 
         // set the initial view data if provided (can be undefined)
-		let initialViewDate = typeof this.props.initialViewDateAttribute === 'undefined' ? undefined : 
-        typeof this.props.initialViewDateAttribute.value === 'undefined' ? undefined : moment(this.props.initialViewDateAttribute.value);
+		let initialViewDate = typeof this.props.initialViewDate === 'undefined' ? undefined : 
+        typeof this.props.initialViewDate.value === 'undefined' ? undefined : moment(this.props.initialViewDate.value);
 
         // if widget is readOnly and show as text, only show the text
         const disabled = this.props.dateTimeAttribute.readOnly;
