@@ -67,7 +67,7 @@
             </property>
             <property key="initialViewDate" type="expression" required="false">
                 <caption>Initial View Date</caption>
-                <description>Attribute used to set the default date the picker opens on when no date is selected.</description> 
+                <description>Date used to set the default date the picker opens on when no date is selected.</description> 
                 <returnType type="DateTime" />
             </property>
         </propertyGroup>
