@@ -56,7 +56,9 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     }
 
     private onChange(dateTimeSelected: moment.Moment): void {
-        this.setState({value: dateTimeSelected});
+        if (moment.isMoment(dateTimeSelected)) {
+            this.setState({value: dateTimeSelected});
+        }
     }
 
     componentDidMount(): void {
