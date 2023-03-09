@@ -55,6 +55,7 @@ export default class ReactDateTimePicker extends Component<ReactDateTimePickerCo
 
         // check if locale has been set
         let locale = typeof this.props.locale === 'undefined' || this.props.locale.value === "" ? undefined : this.props.locale.value;
+        moment.locale(locale);
         // dateFormat can be undefined(use default), a boolean (true if want to use locale default), or a string
         let dateFormat: boolean | string | undefined;
         dateFormat = false;

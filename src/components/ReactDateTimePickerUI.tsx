@@ -63,7 +63,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     componentDidMount(): void {
         document.addEventListener('scroll', this.onScroll, true);
-        this.setState({value: this.props.dateTimeValue})
+        this.setState({value: this.props.dateTimeValue});
     }
 
     componentWillUnmount(): void {
@@ -120,6 +120,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
 
     render(): ReactNode {
+        moment.locale(this.props.locale);
         // specify placeholder and disabled property in inputprops
         let inputProps = {placeholder: this.props.placeholder, disabled: this.props.disabled};
         // Set time contrains (min, max and step)
@@ -166,6 +167,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         if (moment.isMoment(this.state.value)) {
             viewDate = this.state.value;
         }
+        
         return <Fragment>
                     <div className={classNameDiv} ref = {this.widgetRef as React.RefObject<HTMLDivElement>}>
                         <Datetime 
