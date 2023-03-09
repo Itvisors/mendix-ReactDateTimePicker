@@ -120,7 +120,6 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
 
     render(): ReactNode {
-        moment.locale(this.props.locale);
         // specify placeholder and disabled property in inputprops
         let inputProps = {placeholder: this.props.placeholder, disabled: this.props.disabled};
         // Set time contrains (min, max and step)
