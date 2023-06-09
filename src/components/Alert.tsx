@@ -4,6 +4,7 @@ export interface AlertProps {
     id?: string;
     alertStyle?: "default" | "primary" | "success" | "info" | "warning" | "danger";
     className?: string;
+    children?: any;
 }
 export const Alert: FunctionComponent<AlertProps> = ({ alertStyle, className, children, id }) =>
     children ? (

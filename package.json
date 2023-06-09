@@ -11,8 +11,9 @@
     "developmentPort": "3000"
   },
   "packagePath": "itvisors",
+  "license": "Apache-2.0",
   "scripts": {
-    "start": "pluggable-widgets-tools start:server --open",
+    "start": "pluggable-widgets-tools start:server",
     "dev": "pluggable-widgets-tools start:web",
     "build": "pluggable-widgets-tools build:web",
     "lint": "pluggable-widgets-tools lint",
@@ -20,16 +21,21 @@
     "prerelease": "npm run lint",
     "release": "pluggable-widgets-tools release:web"
   },
-  "license": "Apache-2.0",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "~9.17.0",
-    "@types/big.js": "^6.0.2",
-    "@types/react": "~17.0.1",
-    "@types/react-dom": "~17.0.1"
+    "@mendix/pluggable-widgets-tools": "^9.24.0",
+    "@types/big.js": "^6.0.2"
   },
   "dependencies": {
     "classnames": "^2.2.6",
     "moment": "^2.29.4",
     "react-datetime": "~2.16.3"
+  },
+  "resolutions": {
+    "react": "18.2.0",
+    "react-native": "0.70.7"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-native": "0.70.7"
   }
 }
