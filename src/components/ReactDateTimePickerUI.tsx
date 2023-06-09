@@ -41,6 +41,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     private readonly onFocusHandle = this.onFocus.bind(this);
     private readonly OnButtonClickHandle = this.openCalendar.bind(this);
     private readonly onScroll = this.calculatePosition.bind(this);
+    private intersectionObserver? :IntersectionObserver = undefined;
     private closeDate = Date.now();
     datetimeRef: any;
     widgetRef = createRef();
@@ -72,6 +73,25 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     }
 
     componentDidUpdate(prevProps: ReactDateTimeUIProps) {
+        if (this.intersectionObserver === undefined) {
+            if (this.widgetRef.current !== undefined) {
+                // Observer to check whether component enters/leaves view
+                this.intersectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // Only needed first time when widget is shown, since it can be that widget is rendered before it is in view. In this case the position is not calculated correctly if focused.
+                        if (entry.intersectionRatio > 0) {
+                            if (this.isOpen) {
+                                this.calculatePosition();
+                                if (this.intersectionObserver) {
+                                    this.intersectionObserver.disconnect();
+                                }
+                            }
+                        }
+                    });
+                });
+                this.intersectionObserver.observe(this.widgetRef.current as HTMLElement);
+            }
+        }
         if((prevProps.dateTimeValue && prevProps.dateTimeValue.isSame(this.props.dateTimeValue))) {
             return;
         } else if(!(this.props.dateTimeValue) && !(prevProps.dateTimeValue)) {
