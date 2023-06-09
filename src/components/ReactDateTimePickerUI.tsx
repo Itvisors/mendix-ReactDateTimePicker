@@ -28,6 +28,7 @@ export interface ReactDateTimeUIProps {
     showWeekNumbers?: boolean;
     initialViewDate?: Moment;
     readOnlyAsText: boolean;
+    tabIndex?: Number;
 }
 
 interface ReactDateTimePickerUIState {
@@ -186,9 +187,10 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                                 this.datetimeRef = ref;
                             }}
                             showWeekNumbers = {this.props.showWeekNumbers}
+                            tabIndex={this.props.tabIndex}
                         />
                         {this.props.readOnlyAsText ? undefined :
-                            <button type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
+                            <button tabIndex={-1} type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
                                 <span className="glyphicon glyphicon-calendar"></span>
                             </button>}
                     </div>

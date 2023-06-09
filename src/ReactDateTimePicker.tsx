@@ -115,6 +115,7 @@ export default class ReactDateTimePicker extends Component<ReactDateTimePickerCo
                             showWeekNumbers = {this.props.showWeekNumbers}
                             initialViewDate = {initialViewDate}
                             readOnlyAsText = {readOnlyAsText}
+                            tabIndex={this.props.tabIndex}
                         />
                         <Alert id={this.props.id + "-error"}>{validationFeedback}</Alert>
                     </Fragment>;
