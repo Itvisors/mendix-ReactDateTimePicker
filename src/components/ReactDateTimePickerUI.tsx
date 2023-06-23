@@ -74,7 +74,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     componentDidUpdate(prevProps: ReactDateTimeUIProps) {
         if (this.intersectionObserver === undefined) {
-            if (this.widgetRef.current !== undefined) {
+            if (this.widgetRef.current !== undefined && this.widgetRef.current !== null) {
                 // Observer to check whether component enters/leaves view
                 this.intersectionObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
