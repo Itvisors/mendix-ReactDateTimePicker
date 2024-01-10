@@ -1,7 +1,7 @@
 {
   "name": "reactdatetimepicker",
   "widgetName": "ReactDateTimePicker",
-  "version": "1.0.0",
+  "version": "1.7.0",
   "description": "DateTimePicker based on https://github.com/YouCanBookMe/react-datetime",
   "copyright": "ITvisors (2019)",
   "author": "Johan Munneke",

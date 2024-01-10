@@ -1,23 +1,23 @@
 import { Component, ReactNode, createElement, Fragment, createRef } from "react";
-import Datetime from 'react-datetime';
+import Datetime from "react-datetime";
 
-import moment, { Moment } from 'moment';
-import 'moment/min/locales.min';
+import moment, { Moment } from "moment";
+import "moment/min/locales.min";
 
 export interface ReactDateTimeUIProps {
     onBlur: (dateTimeSelected: moment.Moment) => void;
     placeholder?: string;
-    timeFormat?:string | boolean;
-    dateFormat?:string | boolean;
-    maxHours:number;
-    minHours:number;
-    hourStep:number;
-    maxMinutes:number;
-    minMinutes:number;
-    minuteStep:number;
-    maxSeconds:number;
-    minSeconds:number;
-    secondStep:number;
+    timeFormat?: string | boolean;
+    dateFormat?: string | boolean;
+    maxHours: number;
+    minHours: number;
+    hourStep: number;
+    maxMinutes: number;
+    minMinutes: number;
+    minuteStep: number;
+    maxSeconds: number;
+    minSeconds: number;
+    secondStep: number;
     disabled: boolean;
     closeOnSelect: boolean;
     locale?: string;
@@ -41,15 +41,15 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     private readonly onFocusHandle = this.onFocus.bind(this);
     private readonly OnButtonClickHandle = this.openCalendar.bind(this);
     private readonly onScroll = this.calculatePosition.bind(this);
-    private intersectionObserver? :IntersectionObserver = undefined;
+    private intersectionObserver?: IntersectionObserver = undefined;
     private closeDate = Date.now();
     datetimeRef: any;
     widgetRef = createRef();
-    readonly state: ReactDateTimePickerUIState = { 
+    readonly state: ReactDateTimePickerUIState = {
         value: undefined
     };
     private isOpen = false;
-    
+
     private onBlur(dateTimeSelected: moment.Moment): void {
         //on leave, call onclick method and pass the selected datetime
         this.closeDate = Date.now();
@@ -59,24 +59,24 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     private onChange(dateTimeSelected: moment.Moment): void {
         if (moment.isMoment(dateTimeSelected)) {
-            this.setState({value: dateTimeSelected});
+            this.setState({ value: dateTimeSelected });
         }
     }
 
     componentDidMount(): void {
-        document.addEventListener('scroll', this.onScroll, true);
-        this.setState({value: this.props.dateTimeValue});
+        document.addEventListener("scroll", this.onScroll, true);
+        this.setState({ value: this.props.dateTimeValue });
     }
 
     componentWillUnmount(): void {
-        document.removeEventListener('scroll', this.onScroll, true);
+        document.removeEventListener("scroll", this.onScroll, true);
     }
 
     componentDidUpdate(prevProps: ReactDateTimeUIProps) {
         if (this.intersectionObserver === undefined) {
             if (this.widgetRef.current !== undefined && this.widgetRef.current !== null) {
                 // Observer to check whether component enters/leaves view
-                this.intersectionObserver = new IntersectionObserver((entries) => {
+                this.intersectionObserver = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         // Only needed first time when widget is shown, since it can be that widget is rendered before it is in view. In this case the position is not calculated correctly if focused.
                         if (entry.intersectionRatio > 0) {
@@ -92,12 +92,12 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                 this.intersectionObserver.observe(this.widgetRef.current as HTMLElement);
             }
         }
-        if((prevProps.dateTimeValue && prevProps.dateTimeValue.isSame(this.props.dateTimeValue))) {
+        if (prevProps.dateTimeValue && prevProps.dateTimeValue.isSame(this.props.dateTimeValue)) {
             return;
-        } else if(!(this.props.dateTimeValue) && !(prevProps.dateTimeValue)) {
+        } else if (!this.props.dateTimeValue && !prevProps.dateTimeValue) {
             return;
         } else {
-            this.setState({value: this.props.dateTimeValue})
+            this.setState({ value: this.props.dateTimeValue });
         }
     }
 
@@ -115,69 +115,74 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
             this.datetimeRef.openCalendar();
             this.isOpen = true;
             this.calculatePosition();
-        } 
+        }
     }
 
     /**
      * Calculate the position of the datepicker. Will be based on the input element, since it can be scrolled while open.
      */
-     calculatePosition(): void {
+    calculatePosition(): void {
         if (this.isOpen && this.widgetRef.current !== null) {
             const widgetElement = this.widgetRef.current as HTMLElement;
-            let datePicker = widgetElement.getElementsByClassName('rdtPicker')[0] as HTMLElement;
+            let datePicker = widgetElement.getElementsByClassName("rdtPicker")[0] as HTMLElement;
             const widgetRect = widgetElement.getBoundingClientRect();
             //Check the margin from the widget to the bottom of the screen, to determine if datepicker should be shown below or above input field
             const widgetMarginBottom = window.innerHeight - widgetRect.bottom;
             if (widgetMarginBottom < datePicker.scrollHeight) {
-                datePicker.style.bottom = (window.innerHeight - widgetRect.top) + 'px';
-                datePicker.style.top = '';
+                datePicker.style.bottom = window.innerHeight - widgetRect.top + "px";
+                datePicker.style.top = "";
             } else {
-                datePicker.style.top = widgetRect.bottom + 'px';
-                datePicker.style.bottom = '';
+                datePicker.style.top = widgetRect.bottom + "px";
+                datePicker.style.bottom = "";
             }
             const widgetMarginRight = window.innerWidth - widgetRect.left;
             if (widgetMarginRight < datePicker.scrollWidth) {
-                datePicker.style.left = '';
-                datePicker.style.right = '0px';
+                datePicker.style.left = "";
+                datePicker.style.right = "0px";
             } else {
-                datePicker.style.left = widgetRect.left + 'px';
-                datePicker.style.right = '';
+                datePicker.style.left = widgetRect.left + "px";
+                datePicker.style.right = "";
             }
         }
     }
 
-
     render(): ReactNode {
         // specify placeholder and disabled property in inputprops
-        let inputProps = {placeholder: this.props.placeholder, disabled: this.props.disabled};
+        let inputProps = { placeholder: this.props.placeholder, disabled: this.props.disabled };
         // Set time contrains (min, max and step)
-        let timeConstraints = {seconds: {min: this.props.minSeconds, max: this.props.maxSeconds, step:this.props.secondStep},
-                                minutes: {min: this.props.minMinutes, max: this.props.maxMinutes, step:this.props.minuteStep},
-                                hours: {min: this.props.minHours, max: this.props.maxHours, step:this.props.hourStep}};
+        let timeConstraints = {
+            seconds: { min: this.props.minSeconds, max: this.props.maxSeconds, step: this.props.secondStep },
+            minutes: { min: this.props.minMinutes, max: this.props.maxMinutes, step: this.props.minuteStep },
+            hours: { min: this.props.minHours, max: this.props.maxHours, step: this.props.hourStep }
+        };
 
         //Only set this attribute if user selected to disable dates in past or entered a min or max date, otherwise leave as undefined
         let validDate = undefined;
-        if (this.props.disablePast || typeof this.props.minDate !== 'undefined' || typeof this.props.maxDate !== 'undefined') {
+        if (
+            this.props.disablePast ||
+            typeof this.props.minDate !== "undefined" ||
+            typeof this.props.maxDate !== "undefined"
+        ) {
             //Check if date is in the past
-            let yesterday = new Date;
-            yesterday.setDate( yesterday.getDate() - 1 );
+            let yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
             let yesterDayMoment = moment(yesterday);
             var disablePast = this.props.disablePast;
             var minDate = this.props.minDate;
             var maxDate = this.props.maxDate;
-            validDate = function( currentDate : Moment ){
+            validDate = function (currentDate: Moment) {
                 var valid = true;
                 //check if date is in the past
                 if (disablePast) {
-                    valid = currentDate.isAfter( yesterDayMoment );
+                    valid = currentDate.isAfter(yesterDayMoment);
                 }
                 //check if date is after mindate
-                if (valid && typeof minDate !== 'undefined') {
-                    valid = currentDate.isSameOrAfter( minDate );
+                if (valid && typeof minDate !== "undefined") {
+                    valid = currentDate.isSameOrAfter(minDate);
                 }
                 //check if date is before maxdate
-                if (valid && typeof maxDate !== 'undefined') {
-                    valid = currentDate.isSameOrBefore( maxDate );
+                if (valid && typeof maxDate !== "undefined") {
+                    valid = currentDate.isSameOrBefore(maxDate);
                 }
                 return valid;
             };
@@ -187,40 +192,48 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
         if (this.props.disabled) {
             classNamesButton += " disabled";
             if (this.props.readOnlyAsText) {
-                classNameDiv = "form-control-static rdtAsText"
+                classNameDiv = "form-control-static rdtAsText";
             }
         }
         let viewDate = this.props.initialViewDate;
         if (moment.isMoment(this.state.value)) {
             viewDate = this.state.value;
         }
-        
-        return <Fragment>
-                    <div className={classNameDiv} ref = {this.widgetRef as React.RefObject<HTMLDivElement>}>
-                        <Datetime 
-                            onBlur={this.onBlurHandle}
-                            onChange={this.onChangeHandle}
-                            onFocus={this.onFocusHandle}
-                            inputProps = {inputProps}
-                            timeConstraints = {timeConstraints}
-                            timeFormat = {this.props.timeFormat}
-                            dateFormat = {this.props.dateFormat}
-                            closeOnSelect = {this.props.closeOnSelect}
-                            locale = {this.props.locale}
-                            isValidDate = {validDate}
-                            value = {this.state.value}
-                            viewDate = {viewDate}
-                            ref = {ref => {
-                                this.datetimeRef = ref;
-                            }}
-                            showWeekNumbers = {this.props.showWeekNumbers}
-                            tabIndex={this.props.tabIndex}
-                        />
-                        {this.props.readOnlyAsText ? undefined :
-                            <button tabIndex={-1} type= "button" className={classNamesButton} onClick = {this.OnButtonClickHandle}>
-                                <span className="glyphicon glyphicon-calendar"></span>
-                            </button>}
-                    </div>
-                </Fragment>;
+
+        return (
+            <Fragment>
+                <div className={classNameDiv} ref={this.widgetRef as React.RefObject<HTMLDivElement>}>
+                    <Datetime
+                        onBlur={this.onBlurHandle}
+                        onChange={this.onChangeHandle}
+                        onFocus={this.onFocusHandle}
+                        inputProps={inputProps}
+                        timeConstraints={timeConstraints}
+                        timeFormat={this.props.timeFormat}
+                        dateFormat={this.props.dateFormat}
+                        closeOnSelect={this.props.closeOnSelect}
+                        locale={this.props.locale}
+                        isValidDate={validDate}
+                        value={this.state.value}
+                        viewDate={viewDate}
+                        ref={ref => {
+                            this.datetimeRef = ref;
+                        }}
+                        showWeekNumbers={this.props.showWeekNumbers}
+                        tabIndex={this.props.tabIndex}
+                    />
+                    {this.props.readOnlyAsText ? undefined : (
+                        <button
+                            tabIndex={-1}
+                            type="button"
+                            className={classNamesButton}
+                            onClick={this.OnButtonClickHandle}
+                        >
+                            <span className="glyphicon glyphicon-calendar"></span>
+                        </button>
+                    )}
+                </div>
+            </Fragment>
+        );
     }
 }

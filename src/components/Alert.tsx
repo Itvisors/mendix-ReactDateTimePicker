@@ -8,7 +8,7 @@ export interface AlertProps {
 }
 export const Alert: FunctionComponent<AlertProps> = ({ alertStyle, className, children, id }) =>
     children ? (
-        <div id={id}className={classNames(`alert alert-${alertStyle} mx-validation-message`, className)}>
+        <div id={id} className={classNames(`alert alert-${alertStyle} mx-validation-message`, className)}>
             {children}
         </div>
     ) : null;
