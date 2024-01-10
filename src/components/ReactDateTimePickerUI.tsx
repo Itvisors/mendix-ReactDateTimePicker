@@ -135,7 +135,14 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                 datePicker.style.top = widgetRect.bottom + 'px';
                 datePicker.style.bottom = '';
             }
-            datePicker.style.left = widgetRect.left + 'px';
+            const widgetMarginRight = window.innerWidth - widgetRect.left;
+            if (widgetMarginRight < datePicker.scrollWidth) {
+                datePicker.style.left = '';
+                datePicker.style.right = '0px';
+            } else {
+                datePicker.style.left = widgetRect.left + 'px';
+                datePicker.style.right = '';
+            }
         }
     }
 
