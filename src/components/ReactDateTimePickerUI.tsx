@@ -28,7 +28,7 @@ export interface ReactDateTimeUIProps {
     showWeekNumbers?: boolean;
     initialViewDate?: Moment;
     readOnlyAsText: boolean;
-    tabIndex?: Number;
+    tabIndex?: number;
 }
 
 interface ReactDateTimePickerUIState {
@@ -46,12 +46,12 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     datetimeRef: any;
     widgetRef = createRef();
     readonly state: ReactDateTimePickerUIState = {
-        value: undefined
+        value: this.props.dateTimeValue || undefined
     };
     private isOpen = false;
 
     private onBlur(dateTimeSelected: moment.Moment): void {
-        //on leave, call onclick method and pass the selected datetime
+        // on leave, call onclick method and pass the selected datetime
         this.closeDate = Date.now();
         this.props.onBlur(dateTimeSelected);
         this.isOpen = false;
@@ -65,7 +65,6 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     componentDidMount(): void {
         document.addEventListener("scroll", this.onScroll, true);
-        this.setState({ value: this.props.dateTimeValue });
     }
 
     componentWillUnmount(): void {
@@ -92,25 +91,24 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                 this.intersectionObserver.observe(this.widgetRef.current as HTMLElement);
             }
         }
-        if (prevProps.dateTimeValue && prevProps.dateTimeValue.isSame(this.props.dateTimeValue)) {
-            return;
-        } else if (!this.props.dateTimeValue && !prevProps.dateTimeValue) {
-            return;
-        } else {
+        if (
+            this.props.dateTimeValue &&
+            (!prevProps.dateTimeValue || !prevProps.dateTimeValue.isSame(this.props.dateTimeValue))
+        ) {
             this.setState({ value: this.props.dateTimeValue });
         }
     }
 
     private onFocus(): void {
-        //When button is clicked, open the calendar
+        // When button is clicked, open the calendar
         this.datetimeRef.openCalendar();
         this.isOpen = true;
         this.calculatePosition();
     }
 
     private openCalendar(): void {
-        //if button is clicked, first onBlur is triggered, so when this is the case, the calendar should not be opened
-        let timeElapsed = Date.now() - this.closeDate;
+        // if button is clicked, first onBlur is triggered, so when this is the case, the calendar should not be opened
+        const timeElapsed = Date.now() - this.closeDate;
         if (timeElapsed > 100) {
             this.datetimeRef.openCalendar();
             this.isOpen = true;
@@ -124,9 +122,9 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
     calculatePosition(): void {
         if (this.isOpen && this.widgetRef.current !== null) {
             const widgetElement = this.widgetRef.current as HTMLElement;
-            let datePicker = widgetElement.getElementsByClassName("rdtPicker")[0] as HTMLElement;
+            const datePicker = widgetElement.getElementsByClassName("rdtPicker")[0] as HTMLElement;
             const widgetRect = widgetElement.getBoundingClientRect();
-            //Check the margin from the widget to the bottom of the screen, to determine if datepicker should be shown below or above input field
+            // Check the margin from the widget to the bottom of the screen, to determine if datepicker should be shown below or above input field
             const widgetMarginBottom = window.innerHeight - widgetRect.bottom;
             if (widgetMarginBottom < datePicker.scrollHeight) {
                 datePicker.style.bottom = window.innerHeight - widgetRect.top + "px";
@@ -148,39 +146,39 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     render(): ReactNode {
         // specify placeholder and disabled property in inputprops
-        let inputProps = { placeholder: this.props.placeholder, disabled: this.props.disabled };
+        const inputProps = { placeholder: this.props.placeholder, disabled: this.props.disabled };
         // Set time contrains (min, max and step)
-        let timeConstraints = {
+        const timeConstraints = {
             seconds: { min: this.props.minSeconds, max: this.props.maxSeconds, step: this.props.secondStep },
             minutes: { min: this.props.minMinutes, max: this.props.maxMinutes, step: this.props.minuteStep },
             hours: { min: this.props.minHours, max: this.props.maxHours, step: this.props.hourStep }
         };
 
-        //Only set this attribute if user selected to disable dates in past or entered a min or max date, otherwise leave as undefined
-        let validDate = undefined;
+        // Only set this attribute if user selected to disable dates in past or entered a min or max date, otherwise leave as undefined
+        let validDate;
         if (
             this.props.disablePast ||
             typeof this.props.minDate !== "undefined" ||
             typeof this.props.maxDate !== "undefined"
         ) {
-            //Check if date is in the past
-            let yesterday = new Date();
+            // Check if date is in the past
+            const yesterday = new Date();
             yesterday.setDate(yesterday.getDate() - 1);
-            let yesterDayMoment = moment(yesterday);
-            var disablePast = this.props.disablePast;
-            var minDate = this.props.minDate;
-            var maxDate = this.props.maxDate;
+            const yesterDayMoment = moment(yesterday);
+            const disablePast = this.props.disablePast;
+            const minDate = this.props.minDate;
+            const maxDate = this.props.maxDate;
             validDate = function (currentDate: Moment) {
-                var valid = true;
-                //check if date is in the past
+                let valid = true;
+                // check if date is in the past
                 if (disablePast) {
                     valid = currentDate.isAfter(yesterDayMoment);
                 }
-                //check if date is after mindate
+                // check if date is after mindate
                 if (valid && typeof minDate !== "undefined") {
                     valid = currentDate.isSameOrAfter(minDate);
                 }
-                //check if date is before maxdate
+                // check if date is before maxdate
                 if (valid && typeof maxDate !== "undefined") {
                     valid = currentDate.isSameOrBefore(maxDate);
                 }

@@ -15,7 +15,7 @@ export default class ReactDateTimePicker extends Component<
 > {
     private readonly onBlurHandle = this.onBlur.bind(this);
 
-    //On leave of the datepicker, set the attribute to the selected date
+    // On leave of the datepicker, set the attribute to the selected date
     private onBlur(dateTimeSelected: moment.Moment): void {
         // If datetimeSelected is not a string, the date is valid
         if (typeof dateTimeSelected !== "string") {
@@ -24,7 +24,7 @@ export default class ReactDateTimePicker extends Component<
             // Set validDate to true, to be used in the renderer
             this.setInvalidDateAttribute(true);
         } else if (dateTimeSelected === "") {
-            //If the value is empty, set the attribute to undefined(empty)
+            // If the value is empty, set the attribute to undefined(empty)
             this.props.dateTimeAttribute.setValue(undefined);
             this.setInvalidDateAttribute(true);
         } else {
@@ -47,7 +47,7 @@ export default class ReactDateTimePicker extends Component<
 
     render(): ReactNode {
         // determine placeholder
-        let placeholder = typeof this.props.placeholder === "undefined" ? "" : this.props.placeholder.value;
+        const placeholder = typeof this.props.placeholder === "undefined" ? "" : this.props.placeholder.value;
         // initialize validationFeedback, which can be either undefined or a string
         let validationFeedback: string | undefined;
         // If the validationFeedback is set, check whether there is a validation message set
@@ -56,7 +56,7 @@ export default class ReactDateTimePicker extends Component<
         }
 
         // check if locale has been set
-        let locale =
+        const locale =
             typeof this.props.locale === "undefined" || this.props.locale.value === ""
                 ? undefined
                 : this.props.locale.value;
@@ -80,20 +80,20 @@ export default class ReactDateTimePicker extends Component<
                     : this.props.timeFormat.value;
         }
 
-        let dateTimeValue =
+        const dateTimeValue =
             typeof this.props.dateTimeAttribute.value === "undefined"
                 ? undefined
                 : moment(this.props.dateTimeAttribute.value);
 
-        //determine min and max date (can be undefined and value can be undefined)
-        let minDate =
+        // determine min and max date (can be undefined and value can be undefined)
+        const minDate =
             typeof this.props.minDateAttribute === "undefined"
                 ? undefined
                 : typeof this.props.minDateAttribute.value === "undefined"
                 ? undefined
                 : moment(this.props.minDateAttribute.value);
 
-        let maxDate =
+        const maxDate =
             typeof this.props.maxDateAttribute === "undefined"
                 ? undefined
                 : typeof this.props.maxDateAttribute.value === "undefined"
@@ -101,7 +101,7 @@ export default class ReactDateTimePicker extends Component<
                 : moment(this.props.maxDateAttribute.value);
 
         // set the initial view data if provided (can be undefined)
-        let initialViewDate =
+        const initialViewDate =
             typeof this.props.initialViewDate === "undefined"
                 ? undefined
                 : typeof this.props.initialViewDate.value === "undefined"
@@ -112,7 +112,7 @@ export default class ReactDateTimePicker extends Component<
         const disabled = this.props.dateTimeAttribute.readOnly;
         const readOnlyAsText = disabled && this.props.readOnlyStyle === "text";
 
-        //Only render widget when the attribute is available, otherwise the default value is set to undefined
+        // Only render widget when the attribute is available, otherwise the default value is set to undefined
         if (this.props.dateTimeAttribute.status !== "available") {
             return null;
         } else {
