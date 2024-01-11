@@ -1,5 +1,5 @@
 ## ReactDateTimePicker
-DateTimePicker based on https://github.com/YouCanBookMe/react-datetime.
+DateTimePicker, datepicker or timepicker based on https://github.com/YouCanBookMe/react-datetime.
 
 ## Features
 - Use as Datetimepicker.
