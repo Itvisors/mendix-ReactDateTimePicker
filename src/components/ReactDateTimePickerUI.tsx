@@ -65,13 +65,6 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     componentDidMount(): void {
         document.addEventListener("scroll", this.onScroll, true);
-    }
-
-    componentWillUnmount(): void {
-        document.removeEventListener("scroll", this.onScroll, true);
-    }
-
-    componentDidUpdate(prevProps: ReactDateTimeUIProps) {
         if (this.intersectionObserver === undefined) {
             if (this.widgetRef.current !== undefined && this.widgetRef.current !== null) {
                 // Observer to check whether component enters/leaves view
@@ -91,6 +84,13 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
                 this.intersectionObserver.observe(this.widgetRef.current as HTMLElement);
             }
         }
+    }
+
+    componentWillUnmount(): void {
+        document.removeEventListener("scroll", this.onScroll, true);
+    }
+
+    componentDidUpdate(prevProps: ReactDateTimeUIProps) {
         if (
             this.props.dateTimeValue &&
             (!prevProps.dateTimeValue || !prevProps.dateTimeValue.isSame(this.props.dateTimeValue))
