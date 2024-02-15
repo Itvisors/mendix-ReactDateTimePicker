@@ -92,7 +92,7 @@ export class ReactDateTimeUI extends Component<ReactDateTimeUIProps> {
 
     componentDidUpdate(prevProps: ReactDateTimeUIProps) {
         if (
-            this.props.dateTimeValue &&
+            (this.props.dateTimeValue || prevProps.dateTimeValue) &&
             (!prevProps.dateTimeValue || !prevProps.dateTimeValue.isSame(this.props.dateTimeValue))
         ) {
             this.setState({ value: this.props.dateTimeValue });
